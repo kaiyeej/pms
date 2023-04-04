@@ -33,6 +33,18 @@ $routes = array(
         'class_name' => 'Distributions',
         'has_detail' => 0
     ),
+    "expense-category" => array(
+        'class_name' => 'ExpenseCategory',
+        'has_detail' => 0
+    ),
+    "expenses" => array(
+        'class_name' => 'Expenses',
+        'has_detail' => 0
+    ),
+    "project-materials" => array(
+        'class_name' => 'ProjectMaterials',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 

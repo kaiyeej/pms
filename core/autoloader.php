@@ -11,5 +11,8 @@ $classes = array(
     'Projects'          => $pre_class . 'projects.php',
     'ProjectMembers'    => $pre_class . 'projectmembers.php',
     'Payment'           => $pre_class . 'payment.php',
-    'Distributions'     => $pre_class . 'distributions.php'
+    'Distributions'     => $pre_class . 'distributions.php',
+    'ExpenseCategory'   => $pre_class . 'expensecategory.php', 
+    'Expenses'          => $pre_class . 'expenses.php',
+    'ProjectMaterials'  => $pre_class . 'projectmaterials.php',
 );

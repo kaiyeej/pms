@@ -13,7 +13,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Project</label>
-                            <input type="text" class="form-control input-item" placeholder="Project name" name="input[project_name]" id="project_name" required>
+                            <input type="text" class="form-control input-item" placeholder="Project name" name="input[project_name]" id="project_name" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Client</label>
@@ -23,11 +23,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Fee</label>
-                            <input type="number" step="0.1" class="form-control input-item" placeholder="Project fee" name="input[project_fee]" id="project_fee" required>
+                            <input type="number" step="0.1" class="form-control input-item" placeholder="Project fee" name="input[project_fee]" id="project_fee" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Description</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Project description" name="input[project_desc]" id="project_desc"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Project description" name="input[project_desc]" id="project_desc" autocomplete="off"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Date Started</label>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Project remarks" name="input[project_remarks]" id="project_remarks"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Project remarks" name="input[project_remarks]" id="project_remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

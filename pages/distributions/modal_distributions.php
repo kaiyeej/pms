@@ -13,15 +13,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Project</label>
-                            <select class="form-control input-item select2" onchange="getMembers()" name="input[project_id]" id="project_id" style="width:100%" required></select>
+                            <select class="form-control input-item select2" onchange="getMembers()" name="input[project_id]" id="project_id" style="width:100%" autocomplete="off" required></select>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Member</label>
-                            <select class="form-control form-control-sm input-item select2" name="input[project_member_id]" id="project_member_id" style="width:100%;" required></select>
+                            <select class="form-control form-control-sm input-item select2" name="input[project_member_id]" id="project_member_id" style="width:100%;" autocomplete="off" required></select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Amount</label>
-                            <input type="number" step="0.1" class="form-control input-item" placeholder="Distribution amount" name="input[amount]" id="amount" required>
+                            <input type="number" step="0.1" class="form-control input-item" placeholder="Distribution amount" name="input[amount]" id="amount" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Date</label>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Distribution remarks" name="input[cash_distribution_remarks]" id="cash_distribution_remarks"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Distribution remarks" name="input[cash_distribution_remarks]" id="cash_distribution_remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

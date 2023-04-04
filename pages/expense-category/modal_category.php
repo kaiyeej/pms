@@ -9,23 +9,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="hidden_id" name="input[client_id]">
+                    <input type="hidden" id="hidden_id" name="input[expense_category_id]">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label>Name</label>
-                            <input type="text" class="form-control input-item" placeholder="Client name" name="input[client_name]" id="client_name" autocomplete="off" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Contact #</label>
-                            <input type="text" class="form-control input-item" placeholder="Contact number" name="input[client_contact_num]" id="client_contact_num" autocomplete="off" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Address</label>
-                            <input type="text" class="form-control input-item" placeholder="Address" autocomplete="off" name="input[client_address]" id="client_address" required>
+                            <label>Category</label>
+                            <input type="text" class="form-control input-item" placeholder="Expense Category" name="input[expense_category]" id="expense_category" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[client_remarks]" id="client_remarks" autocomplete="off"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks"></textarea>
                         </div>
                     </div>
                 </div>

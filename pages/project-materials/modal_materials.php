@@ -9,23 +9,29 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="hidden_id" name="input[client_id]">
+                    <input type="hidden" id="hidden_id" name="input[project_material_id]">
                     <div class="form-row">
+                        <div class="form-group col-md-12" style="margin-bottom: 0px;">
+                            <div class="custom-control custom-checkbox" style="float: right;">
+                                <input type="checkbox" value="P" class="custom-control-input input-item" name="input[status]" id="status">
+                                <label class="custom-control-label " for="status" style="color:#6777ef;font-weight:bold;"> Paid</label>
+                            </div>
+                        </div>
                         <div class="form-group col-md-12">
-                            <label>Name</label>
-                            <input type="text" class="form-control input-item" placeholder="Client name" name="input[client_name]" id="client_name" autocomplete="off" required>
+                            <label>Project Material</label>
+                            <input type="text" class="form-control input-item" name="input[project_material]" id="project_material" placeholder="Project material" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Contact #</label>
-                            <input type="text" class="form-control input-item" placeholder="Contact number" name="input[client_contact_num]" id="client_contact_num" autocomplete="off" required>
+                            <label>Project</label>
+                            <select class="form-control input-item select2" name="input[project_id]" id="project_id" style="width:100%" required></select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Address</label>
-                            <input type="text" class="form-control input-item" placeholder="Address" autocomplete="off" name="input[client_address]" id="client_address" required>
+                            <label>Amount</label>
+                            <input type="number" class="form-control input-item" name="input[project_material_amount]" id="project_material_amount" step="0.1" placeholder="Project material amount" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[client_remarks]" id="client_remarks" autocomplete="off"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks"></textarea>
                         </div>
                     </div>
                 </div>

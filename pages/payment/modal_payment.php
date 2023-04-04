@@ -13,11 +13,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Project</label>
-                            <select class="form-control input-item select2" name="input[project_id]" id="project_id" style="width:100%" required></select>
+                            <select class="form-control input-item select2" name="input[project_id]" id="project_id" style="width:100%" autocomplete="off" required></select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Amount</label>
-                            <input type="number" step="0.1" class="form-control input-item" placeholder="Payment amount" name="input[payment_amount]" id="payment_amount" required>
+                            <input type="number" step="0.1" class="form-control input-item" placeholder="Payment amount" name="input[payment_amount]" autocomplete="off" id="payment_amount" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Date</label>
@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Payment remarks" name="input[payment_remarks]" id="payment_remarks"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Payment remarks" name="input[payment_remarks]" id="payment_remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>
