@@ -20,6 +20,7 @@ class Projects extends Connection
             $form = array(
                 $this->name             => $this->clean($this->inputs[$this->name]),
                 'client_id'             => $this->inputs['client_id'],
+                'qh_id'             => $this->inputs['qh_id'],
                 'project_desc'          => $this->inputs['project_desc'],
                 'project_fee'           => $this->inputs['project_fee'],
                 'project_remarks'       => $this->inputs['project_remarks'],
@@ -71,6 +72,7 @@ class Projects extends Connection
             $form = array(
                 $this->name             => $this->clean($this->inputs[$this->name]),
                 'client_id'        => $this->inputs['client_id'],
+                'qh_id'        => $this->inputs['qh_id'],
                 'project_desc'        => $this->inputs['project_desc'],
                 'project_fee'    => $this->inputs['project_fee']
             );
@@ -83,10 +85,12 @@ class Projects extends Connection
         $rows = array();
         $Clients = new Clients;
         $Payment = new Payment;
+        $Quotations = new Quotations;
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
+            $row['quotation'] = $Quotations->name($row['qh_id']);
             $row['client_name'] = $Clients->name($row['client_id']);
             $row['project_total'] = number_format($Payment->total_paid($row['project_id']), 2)."/".number_format($row['project_fee'], 2);
             $row['progress'] = $this->task_progress($row['project_id']);
@@ -128,10 +132,11 @@ class Projects extends Connection
     {
         $primary_id = $this->inputs['id'];
         $Clients = new Clients;
+        $Quotations = new Quotations;
         $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
+        $row['quotation'] = $Quotations->name($row['qh_id']);
         $row['client_name'] = $Clients->name($row['client_id']);
-        $row['project_fee'] = number_format($row['project_fee'], 2);
         return $row;
     }
 
@@ -196,7 +201,7 @@ class Projects extends Connection
         $finished = $this->select('tbl_tasks', "count(task_id) as total", "$this->pk = '$primary_id' AND status ='F'");
         $total_finished = $finished->fetch_assoc();
 
-        $total = ($total_finished['total']/$total_task['total'])*100;
+        $total = $total_task['total']>0?($total_finished['total']/$total_task['total'])*100:0;
 
         return $total;
     }

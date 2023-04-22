@@ -36,6 +36,7 @@
                                         </th>
                                         <th></th>
                                         <th>Project</th>
+                                        <th>Quotation</th>
                                         <th>Client</th>
                                         <th>Total</th>
                                         <th>Progress</th>
@@ -74,6 +75,9 @@
                 },
                 {
                     "data": "project_name"
+                },
+                {
+                    "data": "quotation"
                 },
                 {
                     "data": "client_name"
@@ -382,7 +386,8 @@
     $(document).ready(function() {
         getEntries();
         getSelectOption('Clients', 'client_id', 'client_name');
-        getSelectOption('Users', 'user_id', 'user_fullname');
         getSelectOption('Roles', 'roles_id', 'role_name');
+        getSelectOption('Users', 'user_id', 'user_fullname');
+        getSelectOption('Quotations', 'qh_id', 'quote_number');
     });
 </script>

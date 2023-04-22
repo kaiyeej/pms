@@ -333,6 +333,8 @@ if (!isset($_SESSION["pms_status"])) {
               $("#modalEntry").modal('hide');
             } else if (json.data == 2) {
               entry_already_exists();
+            } else if (json.data == -2) {
+              entry_already_exists();
             } else {
               failed_query(json);
             }

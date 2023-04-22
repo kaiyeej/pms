@@ -25,6 +25,10 @@ $routes = array(
         'class_name' => 'Projects',
         'has_detail' => 1
     ),
+    "quotations" => array(
+        'class_name' => 'Quotations',
+        'has_detail' => 1
+    ),
     "payment" => array(
         'class_name' => 'Payment',
         'has_detail' => 0
