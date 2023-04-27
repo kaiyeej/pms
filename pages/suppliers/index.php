@@ -3,7 +3,7 @@
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="#">Master Data</a></div>
-            <div class="breadcrumb-item">Clients</div>
+            <div class="breadcrumb-item">Suppliers</div>
         </div>
     </div>
 
@@ -11,8 +11,8 @@
         <div class="alert alert-light alert-has-icon" style="background:#DEFCF9;border: 1px dashed #3C84AB;">
             <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
             <div class="alert-body">
-                <div class="alert-title">Clients</div>
-                Manage clients here.
+                <div class="alert-title">Suppliers</div>
+                Manage suppliers here.
             </div>
             <div>
                 <a href="#" class="btn btn-icon icon-left btn-primary" onclick="addModal()"><i class="fas fa-plus"></i> Add</a>
@@ -50,9 +50,9 @@
         </div>
     </div>
 </section>
-<?php include "modal_clients.php"; ?>
+<?php include "modal_suppliers.php"; ?>
 <script type="text/javascript">
-    function getEntries() {
+      function getEntries() {
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
             "processing": true,
@@ -62,22 +62,22 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id" id="checkbox-b' + row.client_id + '" value=' + row.client_id + '><label for="checkbox-b' + row.client_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id" id="checkbox-b' + row.supplier_id + '" value=' + row.supplier_id + '><label for="checkbox-b' + row.supplier_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-sm btn-info' onclick='getEntryDetails(" + row.client_id + ")'><span class='fa fa-edit'></span></button></center>";
+                        return "<center><button class='btn btn-sm btn-info' onclick='getEntryDetails(" + row.supplier_id + ")'><span class='fa fa-edit'></span></button></center>";
                     }
                 },
                 {
-                    "data": "client_name"
+                    "data": "supplier_name"
                 },
                 {
-                    "data": "client_address"
+                    "data": "supplier_address"
                 },
                 {
-                    "data": "client_contact_num"
+                    "data": "supplier_contact_num"
                 },
                 {
                     "data": "date_added"
@@ -90,6 +90,6 @@
     }
 
     $(document).ready(function() {
-        getEntries();
+       getEntries();
     });
 </script>

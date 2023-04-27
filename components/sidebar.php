@@ -12,6 +12,7 @@
             <li><a class="nav-link" href="clients"><i class="far fa-address-card"></i> <span>Clients</span></a></li>
             <li><a class="nav-link" href="expense-category"><i class="fa fa-list-ul"></i> <span>Expense Category</span></a></li>
             <li><a class="nav-link" href="roles"><i class="fa fa-project-diagram"></i> <span>Project Roles</span></a></li>
+             <li><a class="nav-link" href="suppliers"><i class="fa fa-users"></i> <span>Suppliers</span></a></li>
 
         <li class="menu-header">Transactions</li>
             <li class="dropdown">

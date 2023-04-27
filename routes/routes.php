@@ -49,6 +49,10 @@ $routes = array(
         'class_name' => 'ProjectMaterials',
         'has_detail' => 0
     ),
+    "suppliers" => array(
+        'class_name' => 'Suppliers',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 
