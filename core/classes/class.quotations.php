@@ -2,31 +2,23 @@
 
 class Quotations extends Connection
 {
-    private $table = 'tbl_quotation_headers';
-    public $pk = 'qh_id';
-    public $name = 'quote_number';
-    public $desc = 'qh_description';
-
+    private $table = 'tbl_quotations';
+    public $pk = 'quotation_id';
+    public $desc = 'quotation_description';
+    public $name = 'quotation_id';
 
     private $table_detail = 'tbl_quotation_details';
-    public $pk2 = 'qd_id';
+    public $pk2 = 'quotation_detail_id';
 
     public function add()
     {
-        $quote_number = $this->clean($this->inputs[$this->name]);
-        $is_exist = $this->select($this->table, $this->pk, "quote_number = '$quote_number'");
-        if ($is_exist->num_rows > 0) {
-            return -2;
-        } else {
-            $form = array(
-                $this->name     => $this->clean($this->inputs[$this->name]),
-                'client_id'     => $this->inputs['client_id'],
-                'qh_description'   => $this->inputs['qh_description'],
-                'quote_date'    => $this->inputs['quote_date'],
-                'qh_valid_until'   => $this->inputs['qh_valid_until'],
-            );
-            return $this->insertIfNotExist($this->table, $form, '', 'Y');
-        }
+        $form = array(
+            'client_id'                 => $this->inputs['client_id'],
+            'quotation_description'     => $this->inputs['quotation_description'],
+            'quotation_date'            => $this->inputs['quotation_date'],
+            'quotation_valid_until'     => $this->inputs['quotation_valid_until'],
+        );
+        return $this->insert($this->table, $form, 'Y');
     }
 
     public function show()
@@ -69,31 +61,25 @@ class Quotations extends Connection
     public function edit()
     {
         $primary_id = $this->inputs[$this->pk];
-        $quote_number = $this->clean($this->inputs[$this->name]);
-        $is_exist = $this->select($this->table, $this->pk, "quote_number = '$quote_number' AND $this->pk != '$primary_id'");
-        if ($is_exist->num_rows > 0) {
-            return 2;
-        } else {
+       
             $form = array(
-                $this->name         => $this->clean($this->inputs[$this->name]),
-                'client_id'         => $this->inputs['client_id'],
-                'qh_description'    => $this->inputs['qh_description'],
-                'quote_number'      => $this->inputs['quote_number'],
-                'quote_date'        => $this->inputs['quote_date'],
-                'qh_valid_until'    => $this->inputs['qh_valid_until'],
+                'client_id'                 => $this->inputs['client_id'],
+                'quotation_description'     => $this->inputs['quotation_description'],
+                'quotation_date'            => $this->inputs['quotation_date'],
+                'quotation_valid_until'     => $this->inputs['quotation_valid_until'],
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");
-        }
+   
     }
 
     public function add_detail()
     {
 
         $form = array(
-            'qh_id'             => $this->inputs['qh_id'],
-            'qd_description'    => $this->inputs['qd_description'],
-            'qd_unit'           => $this->inputs['qd_unit'],
-            'qd_amount'         => $this->inputs['qd_amount']
+            'quotation_id'                    => $this->inputs['quotation_id'],
+            'quotation_detail_description'    => $this->inputs['quotation_detail_description'],
+            'quotation_detail_unit'           => $this->inputs['quotation_detail_unit'],
+            'quotation_detail_amount'         => $this->inputs['quotation_detail_amount']
         );
 
         return $this->insert($this->table_detail, $form);
@@ -105,7 +91,7 @@ class Quotations extends Connection
         $rows = array();
         $result = $this->select($this->table_detail, '*', $param);
         while ($row = $result->fetch_assoc()) {
-            $row['qd_amount'] = number_format($row['qd_amount'],2);
+            $row['quotation_detail_amount'] = number_format($row['quotation_detail_amount'],2);
             $rows[] = $row;
         }
         return $rows;

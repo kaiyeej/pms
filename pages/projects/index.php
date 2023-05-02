@@ -77,7 +77,7 @@
                     "data": "project_name"
                 },
                 {
-                    "data": "quotation"
+                    "data": "quotation_id"
                 },
                 {
                     "data": "client_name"
@@ -182,6 +182,9 @@
                 },
                 {
                     "data": "role"
+                },
+                {
+                    "data": "project_fee"
                 },
                 {
                     "data": "date_added"
@@ -388,6 +391,6 @@
         getSelectOption('Clients', 'client_id', 'client_name');
         getSelectOption('Roles', 'roles_id', 'role_name');
         getSelectOption('Users', 'user_id', 'user_fullname');
-        getSelectOption('Quotations', 'qh_id', 'quote_number');
+        getSelectOption('Quotations', 'quotation_id', 'quotation_id');
     });
 </script>

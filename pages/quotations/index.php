@@ -35,7 +35,7 @@
                                             </div>
                                         </th>
                                         <th></th>
-                                        <th>Quote No.</th>
+                                        <th>Quotation No.</th>
                                         <th>Client</th>
                                         <th>Description</th>
                                         <th>Quote Date</th>
@@ -64,28 +64,28 @@
             "columns": [
                 {
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id" id="checkbox-b' + row.qh_id + '" value=' + row.qh_id + '><label for="checkbox-b' + row.qh_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id" id="checkbox-b' + row.quotation_id + '" value=' + row.quotation_id + '><label for="checkbox-b' + row.quotation_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-sm btn-info' onclick='getEntryDetails2(" + row.qh_id + ")'><span class='fa fa-edit'></span></button></center>";
+                        return "<center><button class='btn btn-sm btn-info' onclick='getEntryDetails2(" + row.quotation_id + ")'><span class='fa fa-edit'></span></button></center>";
                     }
                 },
                 {
-                    "data": "quote_number"
+                    "data": "quotation_id"
                 },
                 {
                     "data": "client_name"
                 },
                 {
-                    "data": "qh_description"
+                    "data": "quotation_description"
                 },
                 {
-                    "data": "quote_date"
+                    "data": "quotation_date"
                 },
                 {
-                    "data": "qh_valid_until"
+                    "data": "quotation_valid_until"
                 },
                 {
                     "data": "date_modified"
@@ -97,7 +97,7 @@
     function getEntries2() {
 
         var hidden_id_2 = $("#hidden_id_2").val();
-        var param = "qh_id = '" + hidden_id_2 + "'";
+        var param = "quotation_id = '" + hidden_id_2 + "'";
 
         $("#dt_entries_2").DataTable().destroy();
         $("#dt_entries_2").DataTable({
@@ -117,17 +117,17 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_2" id="checkbox-b' + row.qd_id + '" value=' + row.qd_id + '><label for="checkbox-b' + row.qd_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_2" id="checkbox-b' + row.quotation_detail_id + '" value=' + row.quotation_detail_id + '><label for="checkbox-b' + row.quotation_detail_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {
-                    "data": "qd_description"
+                    "data": "quotation_detail_description"
                 },
                 {
-                    "data": "qd_unit"
+                    "data": "quotation_detail_unit"
                 },
                 {
-                    "data": "qd_amount"
+                    "data": "quotation_detail_amount"
                 },
                 {
                     "data": "date_added"

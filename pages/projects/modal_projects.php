@@ -17,7 +17,7 @@
                         </div>
                          <div class="form-group col-md-6">
                             <label>Quotation</label>
-                            <select class="form-control input-item select2" name="input[qh_id]" id="qh_id" style="width:100%" required></select>
+                            <select class="form-control input-item select2" name="input[quotation_id]" id="quotation_id" style="width:100%" required></select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Client</label>
@@ -72,7 +72,7 @@
                             <div><b>Delivery Date:</b> <span id="delivery_date_label" class="label-item"></span></div>
                         </div>
                         <div class="col-3">
-                            <div><b>Quotation:</b> <span id="quotation_label" class="label-item"></span></div>
+                            <div><b>Quotation:</b> <span id="quotation_id_label" class="label-item"></span></div>
                             <div><b>Project Fee:</b> <span id="project_fee_label" class="label-item"></span></div>
                             <div><b>Description:</b> <span id="project_desc_label" class="label-item"></span></div>
                             <div><b>Remarks:</b> <span id="project_remarks_label" class="label-item"></span></div>
@@ -194,6 +194,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Project Fee</strong></label>
+                                                    <input type="text" class="form-control input-item" name="input[project_fee]" id="project_fee" required>
+                                                </div>
+                                            </div>
+
                                             <div class='btn-group' style="float: right;">
                                                 <button type="submit" class="btn btn-info" id="btn_submit_2">Submit</button>
                                             </div>
@@ -215,6 +223,7 @@
                                                         </th>
                                                         <th>Member</th>
                                                         <th>Role</th>
+                                                        <th>Project Fee</th>
                                                         <th>Date Added</th>
                                                     </tr>
                                                 </thead>

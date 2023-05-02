@@ -9,13 +9,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                	<input type="hidden" id="hidden_id" name="input[qh_id]">
+                	<input type="hidden" id="hidden_id" name="input[quotation_id]">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Quote No.</label>
-                            <input type="number" step="0.1" class="form-control input-item" placeholder="Quote Number" name="input[quote_number]" id="quote_number" autocomplete="off" required>
-                        </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>Client</label>
 
                             <select class="form-control input-item select2" name="input[client_id]" id="client_id" style="width:100%" required></select>
@@ -23,16 +19,16 @@
 
                         <div class="form-group col-md-12">
                             <label>Description</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Description" name="input[qh_description]" id="qh_description" autocomplete="off"></textarea>
+                            <textarea class="form-control" class="form-control input-item" placeholder="Description" name="input[quotation_description]" id="quotation_description" autocomplete="off"></textarea>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>Quote Date</label>
-                            <input type="date" class="form-control input-item" name="input[quote_date]" id="quote_date" required>
+                            <input type="date" class="form-control input-item" name="input[quotation_date]" id="quotation_date" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Valid Until</label>
-                            <input type="date" class="form-control input-item" name="input[qh_valid_until]" id="qh_valid_until" required>
+                            <input type="date" class="form-control input-item" name="input[quotation_valid_until]" id="quotation_valid_until" required>
                         </div>
                     </div>
                 </div>
@@ -55,11 +51,10 @@
                 <div class="container">
                     <div class="row alert alert-info alert-has-icon" style="padding-left: 0px;padding-right:0px;font-size: small;border: 1px dashed;">
                         <div class="col-3">
-                            <div><b>Quote No.:</b> <span id="quote_number_label" class="label-item"></span></div>
                             <div><b>Client:</b> <span id="client_name_label" class="label-item"></span></div>
-                            <div><b>Quote Date:</b> <span id="quote_date_label" class="label-item"></span></div>
-                            <div><b>Valid Until:</b> <span id="qh_valid_until_label" class="label-item"></span></div>
-                            <div><b>Description:</b> <span id="qh_description_label" class="label-item"></span></div>
+                            <div><b>Quote Date:</b> <span id="quotation_date_label" class="label-item"></span></div>
+                            <div><b>Valid Until:</b> <span id="quotation_valid_until_label" class="label-item"></span></div>
+                            <div><b>Description:</b> <span id="quotation_description_label" class="label-item"></span></div>
                         </div>
                         <div class="col-3">
                            
@@ -87,23 +82,23 @@
                         <div class="row">
                             <div class="col-4" id="col-item">
                                 <form method='POST' id='frm_submit_2'>
-                                    <input type="hidden" id="hidden_id_2" name="input[qh_id]">
+                                    <input type="hidden" id="hidden_id_2" name="input[quotation_id]">
 
                                     <div class="form-group row">
                                         <div class="col">
                                             <label><strong>Description</strong></label>
-                                            <textarea class="form-control" class="form-control input-item" placeholder="Quotation description" name="input[qd_description]" id="qd_description" required></textarea>
+                                            <textarea class="form-control" class="form-control input-item" placeholder="Quotation description" name="input[quotation_detail_description]" id="quotation_detail_description" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col">
                                             <label><strong>Unit</strong></label>
-                                            <input type="number" class="form-control input-item" name="input[qd_unit]" id="qd_unit" required>
+                                            <input type="text" class="form-control input-item" name="input[quotation_detail_unit]" id="quotation_detail_unit" required>
                                         </div>
                                         <div class="col">
                                             <label><strong>Amount</strong></label>
-                                            <input type="number" class="form-control input-item" name="input[qd_amount]" id="qd_amount" required>
+                                            <input type="number" class="form-control input-item" name="input[quotation_detail_amount]" id="quotation_detail_amount" required>
                                         </div>
                                     </div>
                                     
