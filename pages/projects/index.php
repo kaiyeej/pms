@@ -154,7 +154,7 @@
 
         var hidden_id_2 = $("#hidden_id_2").val();
         var param = "project_id = '" + hidden_id_2 + "'";
-
+        getRemainingProjectFee(hidden_id_2);
         getSelectOption('ProjectMembers', 'project_member_id', 'user_fullname', 'project_id="' + hidden_id_2 + '"');
         $("#dt_entries_2").DataTable().destroy();
         $("#dt_entries_2").DataTable({
@@ -184,7 +184,7 @@
                     "data": "role"
                 },
                 {
-                    "data": "project_fee"
+                    "data": "expected_salary"
                 },
                 {
                     "data": "date_added"
@@ -384,6 +384,32 @@
         } else {
             swal("Cannot proceed!", "Please select entries to delete!", "warning");
         }
+    }
+
+     function getRemainingProjectFee(id) {
+        $.ajax({
+            type: "POST",
+            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=view",
+            data: {
+              input: {
+                id: id
+              }
+            },
+            success: function(data) {
+                var jsonParse = JSON.parse(data);
+                const json = jsonParse.data;
+                $("#remaining_project_fee").val(json.remaining_project_fee);
+            }
+        });
+    }
+
+    function getExpectedSalaryByPercentage(){
+        var remaining_project_fee = $("#remaining_project_fee").val()*1;
+        var percentage = $("#percentage").val()*1;
+        var percentage_  = (percentage/100)*1;
+        var total = remaining_project_fee*percentage_;
+        var result = percentage==0?0:total;
+        $("#expected_salary").val(result);
     }
 
     $(document).ready(function() {

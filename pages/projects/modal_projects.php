@@ -185,9 +185,8 @@
                                                         <select class="form-control form-control-sm select2" name="input[user_id]" id="user_id" style="width:100%;" required></select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col">
+
+                                                 <div class="col">
                                                     <label><strong>Role</strong></label>
                                                     <div>
                                                         <select class="form-control form-control-sm select2" name="input[roles_id]" id="roles_id" style="width:100%;" required></select>
@@ -195,10 +194,21 @@
                                                 </div>
                                             </div>
 
+                                             <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Remaining project fee</strong></label>
+                                                    <input type="text" class="form-control input-item" name="input[remaining_project_fee]" id="remaining_project_fee" readonly>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group row">
                                                 <div class="col">
-                                                    <label><strong>Project Fee</strong></label>
-                                                    <input type="text" class="form-control input-item" name="input[project_fee]" id="project_fee" required>
+                                                    <label><strong>Expected Salary</strong></label>
+                                                    <input type="text" class="form-control input-item" name="input[expected_salary]" id="expected_salary" required>
+                                                </div>
+                                                <div class="col">
+                                                    <label><strong>%</strong></label>
+                                                    <input type="text" class="form-control input-item" name="input[percentage]" id="percentage" onkeyup="getExpectedSalaryByPercentage()">
                                                 </div>
                                             </div>
 
@@ -223,7 +233,7 @@
                                                         </th>
                                                         <th>Member</th>
                                                         <th>Role</th>
-                                                        <th>Project Fee</th>
+                                                        <th>Expected Salary</th>
                                                         <th>Date Added</th>
                                                     </tr>
                                                 </thead>

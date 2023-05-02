@@ -37,14 +37,19 @@ class Projects extends Connection
         $primary_id = $this->inputs[$this->pk];
         $fk_det     = $this->inputs[$this->fk_det];
 
-        $form = array(
-            $this->pk => $this->inputs[$this->pk],
-            $this->fk_det => $fk_det,
-            'roles_id' => $this->inputs['roles_id'],
-            'project_fee' => $this->inputs['project_fee']
-        );
+        $remaining_project_fee = $this->remaining_project_fee($primary_id);
+        if($remaining_project_fee<$this->inputs['expected_salary']){
+            return 3;
+        }else{
+            $form = array(
+                $this->pk => $this->inputs[$this->pk],
+                $this->fk_det => $fk_det,
+                'roles_id' => $this->inputs['roles_id'],
+                'expected_salary' => $this->inputs['expected_salary']
+            );
 
-        return $this->insertIfNotExist($this->table_detail, $form, "$this->pk = '$primary_id' AND $this->fk_det = '$fk_det'");
+            return $this->insertIfNotExist($this->table_detail, $form, "$this->pk = '$primary_id' AND $this->fk_det = '$fk_det'");
+        }
     }
 
     public function add_task()
@@ -93,6 +98,7 @@ class Projects extends Connection
             $row['quotation_id'] = $row['quotation_id'];
             $row['client_name'] = $Clients->name($row['client_id']);
             $row['project_total'] = number_format($Payment->total_paid($row['project_id']), 2)."/".number_format($row['project_fee'], 2);
+            $row['remaining_project_fee'] = $this->remaining_project_fee($row['project_id']);
             $row['progress'] = $this->task_progress($row['project_id']);
             $rows[] = $row;
         }
@@ -109,6 +115,7 @@ class Projects extends Connection
         while ($row = $result->fetch_assoc()) {
             $row['member'] = $Users->fullname($row['user_id']);
             $row['role'] = $Roles->name($row['roles_id']);
+            $row['expected_salary'] = number_format($row['expected_salary'],2);
             $rows[] = $row;
         }
         return $rows;
@@ -137,6 +144,7 @@ class Projects extends Connection
         $row = $result->fetch_assoc();
         $row['quotation_id'] = $Quotations->name($row['quotation_id']);
         $row['client_name'] = $Clients->name($row['client_id']);
+        $row['remaining_project_fee'] = $this->remaining_project_fee($primary_id);
         return $row;
     }
 
@@ -202,6 +210,21 @@ class Projects extends Connection
         $total_finished = $finished->fetch_assoc();
 
         $total = $total_task['total']>0?($total_finished['total']/$total_task['total'])*100:0;
+
+        return $total;
+    }
+
+    public function remaining_project_fee($primary_id)
+    {
+        //PROJECT
+        $result_project = $this->select($this->table, "*", "$this->pk = '$primary_id'");
+        $project_row = $result_project->fetch_assoc();
+
+        //SUM PROJECT EXPECTED SALARY
+        $result_project_memeber = $this->select($this->table_detail, "SUM(expected_salary) AS expected_salary_total", "$this->pk = '$primary_id'");
+        $project_member_row = $result_project_memeber->fetch_assoc();
+
+        $total = $project_row['project_fee'] - $project_member_row['expected_salary_total'];
 
         return $total;
     }
