@@ -17,7 +17,7 @@
                         </div>
                          <div class="form-group col-md-6">
                             <label>Quotation</label>
-                            <select class="form-control input-item select2" name="input[quotation_id]" id="quotation_id" style="width:100%" required></select>
+                            <select class="form-control input-item select2" name="input[quotation_id]" id="quotation_id" style="width:100%"></select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Client</label>
