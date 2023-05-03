@@ -184,7 +184,9 @@
                     "data": "role"
                 },
                 {
-                    "data": "expected_salary"
+                    "mRender": function(data, type, row) {
+                        return '<input type="number" class="form-control input-item" id="textbox-expected-salary-new'+row.project_member_id+'" value='+row.expected_salary+' onchange="updateExpectedSalary('+row.project_member_id+')"><input type="hidden" id="textbox-expected-salary-old'+row.project_member_id+'" value='+row.expected_salary+'>';
+                    }
                 },
                 {
                     "data": "date_added"
@@ -386,7 +388,7 @@
         }
     }
 
-     function getRemainingProjectFee(id) {
+    function getRemainingProjectFee(id) {
         $.ajax({
             type: "POST",
             url: "controllers/sql.php?c=" + route_settings.class_name + "&q=view",
@@ -399,17 +401,52 @@
                 var jsonParse = JSON.parse(data);
                 const json = jsonParse.data;
                 $("#remaining_project_fee").val(json.remaining_project_fee);
+                $("#project_fee_").val(json.project_fee);
             }
         });
     }
 
     function getExpectedSalaryByPercentage(){
-        var remaining_project_fee = $("#remaining_project_fee").val()*1;
+        var project_fee_view = $("#project_fee_").val()*1;
         var percentage = $("#percentage").val()*1;
         var percentage_  = (percentage/100)*1;
-        var total = remaining_project_fee*percentage_;
+        var total = project_fee_view*percentage_;
         var result = percentage==0?0:total;
         $("#expected_salary").val(result);
+    }
+
+    function updateExpectedSalary(project_member_id){
+        var remaining_project_fee   = $("#remaining_project_fee").val()*1;
+        var expected_salary_old     = $("#textbox-expected-salary-old"+project_member_id).val()*1;
+        var expected_salary_new     = $("#textbox-expected-salary-new"+project_member_id).val()*1;
+        
+        var remaining_project_fee = remaining_project_fee+expected_salary_old;
+
+        if(expected_salary_new>remaining_project_fee){ //OVER 
+            amount_is_greater();
+            $("#textbox-expected-salary-new"+project_member_id).val(expected_salary_old);
+        }else{
+
+            $.ajax({
+                type: "POST",
+                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=update_expected_salary",
+                data: {
+                  input: {
+                    id: project_member_id,
+                    expected_salary:expected_salary_new
+                  }
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    if (json.data == 1) {
+                       success_update();
+                       getEntries2();
+                    }else{
+                        failed_query(json);
+                    }
+                }
+            });
+        }
     }
 
     $(document).ready(function() {

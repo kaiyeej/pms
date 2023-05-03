@@ -101,15 +101,15 @@
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-pills" id="myTab3" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active show" id="tasks-tab3" data-toggle="tab" href="#tasks3" role="tab" aria-controls="tasks" aria-selected="false">Tasks</a>
+                             <li class="nav-item">
+                                <a class="nav-link active show" id="members-tab3" data-toggle="tab" href="#members3" role="tab" aria-controls="members" aria-selected="true">Members</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="members-tab3" data-toggle="tab" href="#members3" role="tab" aria-controls="members" aria-selected="true">Members</a>
+                                <a class="nav-link" id="tasks-tab3" data-toggle="tab" href="#tasks3" role="tab" aria-controls="tasks" aria-selected="false">Tasks</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent2">
-                            <div class="tab-pane fade active show" id="tasks3" role="tabpanel" aria-labelledby="tasks-tab3">
+                            <div class="tab-pane fade" id="tasks3" role="tabpanel" aria-labelledby="tasks-tab3">
                                 <div class="row">
                                     <div class="col-4" id="col-item">
                                         <form method='POST' id='frm_submit_3'>
@@ -172,7 +172,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="members3" role="tabpanel" aria-labelledby="members-tab3">
+                            <div class="tab-pane fade active show" id="members3" role="tabpanel" aria-labelledby="members-tab3">
                                 <div class="row">
                                     <div class="col-4" id="col-item">
                                         <form method='POST' id='frm_submit_2'>
@@ -198,6 +198,7 @@
                                                 <div class="col">
                                                     <label><strong>Remaining project fee</strong></label>
                                                     <input type="text" class="form-control input-item" name="input[remaining_project_fee]" id="remaining_project_fee" readonly>
+                                                    <input type="hidden" class="form-control input-item" name="input[project_fee_]" id="project_fee_" readonly>
                                                 </div>
                                             </div>
 

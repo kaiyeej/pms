@@ -228,4 +228,17 @@ class Projects extends Connection
 
         return $total;
     }
+
+    public function update_expected_salary(){
+        $project_member_id = $this->inputs['id'];
+
+
+
+
+
+        $form = array(
+            'expected_salary'    => $this->inputs['expected_salary']
+        );
+        return $this->update($this->table_detail, $form, "$this->pk2 = '$project_member_id'");
+    }
 }
