@@ -194,6 +194,14 @@ class Projects extends Connection
         return $this->update('tbl_tasks', $form, "task_id IN($ids)");
     }
 
+    public function paidMaterial()
+    {
+        $ids = implode(",", $this->inputs['ids']);
+        $form = array(
+            'status'    => 'P',
+        );
+        return $this->update('tbl_project_materials', $form, "project_material_id IN($ids)");
+    }
     
     public function deleteTask()
     {

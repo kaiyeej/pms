@@ -290,6 +290,7 @@
                                     </div>
                                     <div class="col-8" id="col-list">
                                         <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="paidMaterial()" id="btn_paid_material" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Paid</button>
                                             <button type="button" onclick="deleteMaterial()" id="btn_delete_material" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Delete</button>
                                         </div>
                                         <div class="table-responsive">
@@ -298,8 +299,8 @@
                                                     <tr>
                                                         <th style="width:10px;">
                                                             <div class="custom-checkbox custom-control">
-                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1" onchange="checkAll(this, 'dt_id')">
-                                                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-4" onchange="checkAll(this, 'dt_id_4')">
+                                                                <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
                                                             </div>
                                                         </th>
                                                         <th>Material</th>

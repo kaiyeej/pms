@@ -361,6 +361,60 @@
         }
     }
 
+    function paidMaterial() {
+
+        var count_checked = $("input[name='dt_id_4']:checked").length;
+
+        if (count_checked > 0) {
+
+            $("#btn_paid_material").prop("disabled", true);
+            $("#btn_paid_material").html("<span class='fa fa-spinner fa-spin'></span>");
+            swal({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover these entries!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var checkedValues = $("input[name='dt_id_4']:checked").map(function() {
+                            return this.value;
+                        }).get();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=paidMaterial",
+                            data: {
+                                input: {
+                                    ids: checkedValues
+                                }
+                            },
+                            success: function(data) {
+                                getEntries4();
+                                var json = JSON.parse(data);
+                                console.log(json);
+                                if (json.data == 1) {
+                                    swal("Success!", "Successfully paid material!", "success");
+                                } else {
+                                    failed_query(json);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                errorLogger('Error:', textStatus, errorThrown);
+                            }
+                        });
+                    } else {
+                        swal("Cancelled", "Entries are safe :)", "error");
+                    }
+                    $("#btn_paid_material").prop('disabled', false);
+                    $("#btn_paid_material").html('<i class = "fas fa-check"> </i> Finish');
+                });
+        } else {
+            swal("Cannot proceed!", "Please select entries to finish!", "warning");
+        }
+    }
+
     function deleteTask() {
 
         var count_checked = $("input[name='dt_id_3']:checked").length;
