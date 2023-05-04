@@ -52,6 +52,28 @@ class Projects extends Connection
         }
     }
 
+    public function add_material()
+    {
+        $primary_id = $this->inputs[$this->pk];
+        $project_material = $this->inputs['project_material'];
+
+        if(isset($this->inputs['status'])){
+            $status = $this->inputs['status'];
+        }else{
+            $status = 'S';
+        }
+
+        $form = array(
+            'project_material'          => $project_material,
+            $this->pk                   => $this->inputs[$this->pk],
+            'project_material_amount'   => $this->inputs['project_material_amount'],
+            'remarks'                   => $this->inputs['remarks'],
+            'status '                   => $status,
+        );
+
+        return $this->insertIfNotExist('tbl_project_materials', $form, "$this->pk = '$primary_id' AND project_material = '$project_material'");
+    }
+
     public function add_task()
     {
         $primary_id = $this->inputs[$this->pk];
@@ -65,7 +87,6 @@ class Projects extends Connection
 
         return $this->insertIfNotExist('tbl_tasks', $form, "$this->pk = '$primary_id' AND task_desc = '$task_desc'");
     }
-
 
     public function edit()
     {
@@ -185,7 +206,12 @@ class Projects extends Connection
         $ids = implode(",", $this->inputs['ids']);
         return $this->delete($this->table_detail, "$this->pk2 IN($ids)");
     }
-    
+
+    public function deleteMaterial()
+    {
+        $ids = implode(",", $this->inputs['ids']);
+        return $this->delete('tbl_project_materials', "project_material_id IN($ids)");
+    }
 
     public function name($primary_id)
     {
@@ -231,14 +257,20 @@ class Projects extends Connection
 
     public function update_expected_salary(){
         $project_member_id = $this->inputs['id'];
-
-
-
-
-
         $form = array(
             'expected_salary'    => $this->inputs['expected_salary']
         );
         return $this->update($this->table_detail, $form, "$this->pk2 = '$project_member_id'");
+    }
+
+    public function show_materials(){
+        $rows = array();
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
+        $rows = array();
+        $result = $this->select('tbl_project_materials', '*', $param);
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
     }
 }

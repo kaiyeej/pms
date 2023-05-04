@@ -19,7 +19,6 @@
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Projects</span></a>
               <ul class="dropdown-menu" style="display: none;">
                 <li><a class="nav-link" href="projects">All Entries</a></li>
-                <li><a class="nav-link" href="project-materials">Materials</a></li>
                 <li><a class="nav-link" href="quotations">Quotations</a></li>
               </ul>
             </li>

@@ -195,6 +195,57 @@
         });
     }
 
+
+    function getEntries4() {
+
+        var hidden_id_4 = $("#hidden_id_4").val();
+        var param = "project_id = '" + hidden_id_4 + "'";
+   
+        $("#dt_entries_4").DataTable().destroy();
+        $("#dt_entries_4").DataTable({
+            "processing": true,
+            "order": [
+                [3, 'desc']
+            ],
+            "ajax": {
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_materials",
+                "dataSrc": "data",
+                "type": "POST",
+                "data": {
+                    input: {
+                        param: param
+                    }
+                }
+            },
+            "columns": [{
+                    "mRender": function(data, type, row) {
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_4" id="checkbox-b' + row.project_material_id + '" value=' + row.project_material_id + '><label for="checkbox-b' + row.project_material_id + '" class="custom-control-label">&nbsp;</label></div>';
+                    }
+                },
+                {
+                    "data": "project_material"
+                },
+                {
+                    "data": "project_material_amount"
+                },
+                {
+                    "data": "remarks"
+                },
+                {
+                    "mRender": function(data, type, row) {
+                        return row.status == "P" ? "Paid" : "" ;
+                    }
+                },
+                {
+                    "data": "date_added"
+                },
+                {
+                    "data": "date_modified"
+                }
+            ]
+        });
+    }
+
     $("#frm_submit_3").submit(function(e) {
         e.preventDefault();
 
@@ -222,6 +273,36 @@
                 }
                 $("#btn_submit_3").prop('disabled', false);
                 $("#btn_submit_3").html("Submit");
+            }
+        });
+    });
+
+
+    $("#frm_submit_4").submit(function(e) {
+        e.preventDefault();
+
+        $("#btn_submit_4").prop('disabled', true);
+        $("#btn_submit_4").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
+
+        $.ajax({
+            type: "POST",
+            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=add_material",
+            data: $("#frm_submit_4").serialize(),
+            success: function(data) {
+                getEntries4();
+                var json = JSON.parse(data);
+                if (json.data == 1) {
+                    success_add();
+                    document.getElementById("frm_submit_4").reset();
+                    $('.select2').select2().trigger('change');
+                } else if (json.data == 2) {
+                    entry_already_exists();
+                } else {
+                    failed_query(json);
+                    $("#modalEntry2").modal('hide');
+                }
+                $("#btn_submit_4").prop('disabled', false);
+                $("#btn_submit_4").html("Submit");
             }
         });
     });
@@ -335,7 +416,6 @@
     }
 
     function deleteMember() {
-
         var count_checked = $("input[name='dt_id_2']:checked").length;
 
         if (count_checked > 0) {
@@ -382,6 +462,59 @@
                     }
                     $("#btn_delete_member").prop('disabled', false);
                     $("#btn_delete_member").html('<i class = "fas fa-trash"> </i> Delete');
+                });
+        } else {
+            swal("Cannot proceed!", "Please select entries to delete!", "warning");
+        }
+    }
+
+    function deleteMaterial(){
+        var count_checked = $("input[name='dt_id_4']:checked").length;
+
+        if (count_checked > 0) {
+
+            $("#btn_delete_material").prop("disabled", true);
+            $("#btn_delete_material").html("<span class='fa fa-spinner fa-spin'></span>");
+            swal({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover these entries!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var checkedValues = $("input[name='dt_id_4']:checked").map(function() {
+                            return this.value;
+                        }).get();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=deleteMaterial",
+                            data: {
+                                input: {
+                                    ids: checkedValues
+                                }
+                            },
+                            success: function(data) {
+                                getEntries4();
+                                var json = JSON.parse(data);
+                                console.log(json);
+                                if (json.data == 1) {
+                                    swal("Success!", "Successfully deleted material!", "success");
+                                } else {
+                                    failed_query(json);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                errorLogger('Error:', textStatus, errorThrown);
+                            }
+                        });
+                    } else {
+                        swal("Cancelled", "Entries are safe :)", "error");
+                    }
+                    $("#btn_delete_material").prop('disabled', false);
+                    $("#btn_delete_material").html('<i class = "fas fa-trash"> </i> Delete');
                 });
         } else {
             swal("Cannot proceed!", "Please select entries to delete!", "warning");

@@ -107,71 +107,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="tasks-tab3" data-toggle="tab" href="#tasks3" role="tab" aria-controls="tasks" aria-selected="false">Tasks</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="materials-tab3" data-toggle="tab" href="#materials3" role="tab" aria-controls="materials" aria-selected="false">Materials</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent2">
-                            <div class="tab-pane fade" id="tasks3" role="tabpanel" aria-labelledby="tasks-tab3">
-                                <div class="row">
-                                    <div class="col-4" id="col-item">
-                                        <form method='POST' id='frm_submit_3'>
-                                            <input type="hidden" id="hidden_id_3" name="input[project_id]">
-
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label><strong>Member</strong></label>
-                                                    <div>
-                                                        <select class="form-control form-control-sm select2" name="input[project_member_id]" id="project_member_id" style="width:100%;" required></select>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <label><strong>Date Started</strong></label>
-                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="task_date_started" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label><strong>Task</strong></label>
-                                                    <textarea class="form-control" class="form-control input-item" placeholder="Task description" name="input[task_desc]" id="task_desc" required></textarea>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="form-group row">
-                                                <div class="col">
-                                                    <label><strong>Date Started</strong></label>
-                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="date_started" required>
-                                                </div>
-                                            </div> -->
-                                            <div class='btn-group' style="float: right;">
-                                                <button type="submit" class="btn btn-info" id="btn_submit_3">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-6" id="col-list">
-                                        <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
-                                            <button type="button" onclick="finishTask()" id="btn_finish_task" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Finish</button>
-                                            <button type="button" onclick="deleteTask()" id="btn_delete_task" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Delete</button>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped" id="dt_entries_3" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="custom-checkbox custom-control">
-                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-3" onchange="checkAll(this, 'dt_id_3')">
-                                                                <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
-                                                            </div>
-                                                        </th>
-                                                        <th>Member</th>
-                                                        <th>Task</th>
-                                                        <th>Status</th>
-                                                        <th>Date Started</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="tab-pane fade active show" id="members3" role="tabpanel" aria-labelledby="members-tab3">
                                 <div class="row">
                                     <div class="col-4" id="col-item">
@@ -236,6 +176,138 @@
                                                         <th>Role</th>
                                                         <th>Expected Salary</th>
                                                         <th>Date Added</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="tasks3" role="tabpanel" aria-labelledby="tasks-tab3">
+                                <div class="row">
+                                    <div class="col-4" id="col-item">
+                                        <form method='POST' id='frm_submit_3'>
+                                            <input type="hidden" id="hidden_id_3" name="input[project_id]">
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Member</strong></label>
+                                                    <div>
+                                                        <select class="form-control form-control-sm select2" name="input[project_member_id]" id="project_member_id" style="width:100%;" required></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <label><strong>Date Started</strong></label>
+                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="task_date_started" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Task</strong></label>
+                                                    <textarea class="form-control" class="form-control input-item" placeholder="Task description" name="input[task_desc]" id="task_desc" required></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Date Started</strong></label>
+                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="date_started" required>
+                                                </div>
+                                            </div> -->
+                                            <div class='btn-group' style="float: right;">
+                                                <button type="submit" class="btn btn-info" id="btn_submit_3">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-8" id="col-list">
+                                        <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="finishTask()" id="btn_finish_task" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Finish</button>
+                                            <button type="button" onclick="deleteTask()" id="btn_delete_task" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped" id="dt_entries_3" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="custom-checkbox custom-control">
+                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-3" onchange="checkAll(this, 'dt_id_3')">
+                                                                <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Member</th>
+                                                        <th>Task</th>
+                                                        <th>Status</th>
+                                                        <th>Date Started</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="materials3" role="tabpanel" aria-labelledby="materials-tab3">
+                                <div class="row">
+                                    <div class="col-4" id="col-item">
+                                        <form method='POST' id='frm_submit_4'>
+                                            <input type="hidden" id="hidden_id_4" name="input[project_id]">
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <div class="custom-control custom-checkbox" style="float: right;">
+                                                        <input type="checkbox" value="P" class="custom-control-input input-item" name="input[status]" id="status">
+                                                        <label class="custom-control-label " for="status" style="color:#6777ef;font-weight:bold;"> Paid</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label>Project Material</label>
+                                                    <input type="text" class="form-control input-item" name="input[project_material]" id="project_material" placeholder="Project material" required>
+                                                </div>
+
+                                                <div class="col">
+                                                    <label>Amount</label>
+                                                    <input type="number" class="form-control input-item" name="input[project_material_amount]" id="project_material_amount" step="0.1" placeholder="Project material amount" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label>Remarks</label>
+                                                    <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class='btn-group' style="float: right;">
+                                                <button type="submit" class="btn btn-info" id="btn_submit_4">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-8" id="col-list">
+                                        <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="deleteMaterial()" id="btn_delete_material" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped" id="dt_entries_4" width="100%" cellspacing="0">
+                                                <thead class="">
+                                                    <tr>
+                                                        <th style="width:10px;">
+                                                            <div class="custom-checkbox custom-control">
+                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1" onchange="checkAll(this, 'dt_id')">
+                                                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Material</th>
+                                                        <th>Amount</th>
+                                                        <th>Remarks</th>
+                                                        <th>Status</th>
+                                                        <th>Date Added</th>
+                                                        <th>Date Modified</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
