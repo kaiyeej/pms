@@ -330,11 +330,13 @@ if (!isset($_SESSION["pms_status"])) {
           } else {
             if (json.data == 1) {
               hidden_id > 0 ? success_update() : success_add();
-              $("#modalEntry").modal('hide');
+              route_settings.class_name=="Distributions"?getMembers():$("#modalEntry").modal('hide');
             } else if (json.data == 2) {
               entry_already_exists();
             } else if (json.data == -2) {
               entry_already_exists();
+            } else if (json.data == 3) {
+              amount_is_greater();
             } else {
               failed_query(json);
             }

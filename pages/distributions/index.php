@@ -93,9 +93,44 @@
         });
     }
 
+    function getEntries2(project_id){
+        var param = "project_id = '" + project_id + "'";
+        $("#dt_entries_2").DataTable().destroy();
+        $("#dt_entries_2").DataTable({
+            "processing": true,
+            "order": [
+                [3, 'desc']
+            ],
+            "ajax": {
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_detail",
+                "dataSrc": "data",
+                "type": "POST",
+                "data": {
+                    input: {
+                        param: param
+                    }
+                }
+            },
+            "columns": [{
+                    "data": "member"
+                },
+                {
+                    "data": "expected_salary"
+                },
+                {
+                    "data": "received"
+                },
+                {
+                    "data": "balance"
+                },
+            ]
+        });
+    }
+
     function getMembers(){
         var project_id = $("#project_id").val();
         getSelectOption('ProjectMembers', 'project_member_id', 'user_fullname', 'project_id="' + project_id + '"');
+        getEntries2(project_id);
     }
 
     $(document).ready(function() {
