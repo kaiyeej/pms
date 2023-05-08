@@ -39,19 +39,6 @@ if (!isset($_SESSION["pms_status"])) {
   <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
 
-  <!-- Start GA -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-94034622-3');
-  </script>
-  <!-- /END GA -->
   <style>
     @media (min-width: 768px) {
       .modal-xl {
