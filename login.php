@@ -5,6 +5,7 @@ if (isset($_SESSION["pms_status"])) {
     header("location:homepage");
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
