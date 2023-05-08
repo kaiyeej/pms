@@ -136,7 +136,7 @@ class Projects extends Connection
         while ($row = $result->fetch_assoc()) {
             $row['member'] = $Users->fullname($row['user_id']);
             $row['role'] = $Roles->name($row['roles_id']);
-            $row['expected_salary'] = number_format($row['expected_salary'],2);
+            $row['expected_salary'] = $row['expected_salary'];
             $rows[] = $row;
         }
         return $rows;
