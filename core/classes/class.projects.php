@@ -82,6 +82,21 @@ class Projects extends Connection
             $this->pk => $this->inputs[$this->pk],
             'project_member_id' => $this->inputs['project_member_id'],
             'date_started' => $this->inputs['date_started'],
+            'task_type' => "T",
+            'task_desc' => $task_desc,
+        );
+
+        return $this->insertIfNotExist('tbl_tasks', $form, "$this->pk = '$primary_id' AND task_desc = '$task_desc'");
+    }
+
+    public function add_issue()
+    {
+        $primary_id = $this->inputs[$this->pk];
+        $task_desc = $this->inputs['task_desc_2'];
+        $form = array(
+            $this->pk => $this->inputs[$this->pk],
+            'date_started' => $this->inputs['date_started_2'],
+            'task_type' => "I",
             'task_desc' => $task_desc,
         );
 
@@ -155,6 +170,20 @@ class Projects extends Connection
         }
         return $rows;
     }
+
+    public function show_issue()
+    {
+        $Users = new Users();
+        $Roles = new Roles();
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
+        $rows = array();
+        $result = $this->select("tbl_tasks", '*', $param);
+        while ($row = $result->fetch_assoc()) {
+            $row['member'] = $Users->fullname($row['project_member_id']);
+            $rows[] = $row;
+        }
+        return $rows;
+    }
     
     public function view()
     {
@@ -194,6 +223,16 @@ class Projects extends Connection
         return $this->update('tbl_tasks', $form, "task_id IN($ids)");
     }
 
+    public function finishIssue()
+    {
+        $ids = implode(",", $this->inputs['ids']);
+        $form = array(
+            'status'    => 'F',
+            'date_finished' => $this->getCurrentDate(),
+        );
+        return $this->update('tbl_tasks', $form, "task_id IN($ids)");
+    }
+
     public function paidMaterial()
     {
         $ids = implode(",", $this->inputs['ids']);
@@ -204,6 +243,12 @@ class Projects extends Connection
     }
     
     public function deleteTask()
+    {
+        $ids = implode(",", $this->inputs['ids']);
+        return $this->delete('tbl_tasks',"task_id IN($ids)");
+    }
+
+    public function deleteIssue()
     {
         $ids = implode(",", $this->inputs['ids']);
         return $this->delete('tbl_tasks',"task_id IN($ids)");

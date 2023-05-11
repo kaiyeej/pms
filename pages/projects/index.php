@@ -77,7 +77,9 @@
                     "data": "project_name"
                 },
                 {
-                    "data": "quotation_id"
+                    "mRender": function(data, type, row) {
+                        return row.quotation_id == 0 ? "<span class='badge badge-danger'>No quotation</span>" : row.quotation_id;
+                    }
                 },
                 {
                     "data": "client_name"
@@ -109,7 +111,7 @@
     function getEntries3() {
 
         var hidden_id_3 = $("#hidden_id_3").val();
-        var param = "project_id = '" + hidden_id_3 + "'";
+        var param = "project_id = '" + hidden_id_3 + "' AND task_type='T'";
 
         $("#dt_entries_3").DataTable().destroy();
         $("#dt_entries_3").DataTable({
@@ -156,6 +158,7 @@
         var param = "project_id = '" + hidden_id_2 + "'";
         getRemainingProjectFee(hidden_id_2);
         getSelectOption('ProjectMembers', 'project_member_id', 'user_fullname', 'project_id="' + hidden_id_2 + '"');
+
         $("#dt_entries_2").DataTable().destroy();
         $("#dt_entries_2").DataTable({
             "processing": true,
@@ -246,6 +249,47 @@
         });
     }
 
+    function getEntries5() {
+
+        var hidden_id_5 = $("#hidden_id_5").val();
+        var param = "project_id = '" + hidden_id_5 + "' AND task_type='I'";
+
+        $("#dt_entries_5").DataTable().destroy();
+        $("#dt_entries_5").DataTable({
+            "processing": true,
+            "order": [
+                [3, 'desc']
+            ],
+            "ajax": {
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_issue",
+                "dataSrc": "data",
+                "type": "POST",
+                "data": {
+                    input: {
+                        param: param
+                    }
+                }
+            },
+            "columns": [{
+                    "mRender": function(data, type, row) {
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_5" id="checkbox-b' + row.task_id + '" value=' + row.task_id + '><label for="checkbox-b' + row.task_id + '" class="custom-control-label">&nbsp;</label></div>';
+                    }
+                },
+                {
+                    "data": "task_desc"
+                },
+                {
+                    "mRender": function(data, type, row) {
+                        return row.status == "F" ? "<div class='badge badge-success'>Finished</div>" : "<div class='badge badge-light'>Todo</div>";
+                    }
+                },
+                {
+                    "data": "date_started"
+                },
+            ]
+        });
+    }
+
     $("#frm_submit_3").submit(function(e) {
         e.preventDefault();
 
@@ -307,6 +351,37 @@
         });
     });
 
+     $("#frm_submit_5").submit(function(e) {
+        e.preventDefault();
+
+        $("#btn_submit_5").prop('disabled', true);
+        $("#btn_submit_5").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
+
+        $.ajax({
+            type: "POST",
+            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=add_issue",
+            data: $("#frm_submit_5").serialize(),
+            success: function(data) {
+                getEntries5();
+                var json = JSON.parse(data);
+                if (json.data == 1) {
+                    success_add();
+                    document.getElementById("frm_submit_5").reset();
+                    $('.select2').select2().trigger('change');
+                } else if (json.data == 2) {
+                    entry_already_exists();
+                } else if (json.data == 3) {
+                    amount_is_greater();
+                } else {
+                    failed_query(json);
+                    $("#modalEntry2").modal('hide');
+                }
+                $("#btn_submit_5").prop('disabled', false);
+                $("#btn_submit_5").html("Submit");
+            }
+        });
+    });
+
     function finishTask() {
 
         var count_checked = $("input[name='dt_id_3']:checked").length;
@@ -355,6 +430,60 @@
                     }
                     $("#btn_finish_task").prop('disabled', false);
                     $("#btn_finish_task").html('<i class = "fas fa-check"> </i> Finish');
+                });
+        } else {
+            swal("Cannot proceed!", "Please select entries to finish!", "warning");
+        }
+    }
+
+    function finishIssue() {
+
+        var count_checked = $("input[name='dt_id_5']:checked").length;
+
+        if (count_checked > 0) {
+
+            $("#btn_finish_issue").prop("disabled", true);
+            $("#btn_finish_issue").html("<span class='fa fa-spinner fa-spin'></span>");
+            swal({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover these entries!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var checkedValues = $("input[name='dt_id_5']:checked").map(function() {
+                            return this.value;
+                        }).get();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=finishIssue",
+                            data: {
+                                input: {
+                                    ids: checkedValues
+                                }
+                            },
+                            success: function(data) {
+                                getEntries5();
+                                var json = JSON.parse(data);
+                                console.log(json);
+                                if (json.data == 1) {
+                                    swal("Success!", "Successfully finished issue!", "success");
+                                } else {
+                                    failed_query(json);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                errorLogger('Error:', textStatus, errorThrown);
+                            }
+                        });
+                    } else {
+                        swal("Cancelled", "Entries are safe :)", "error");
+                    }
+                    $("#btn_finish_issue").prop('disabled', false);
+                    $("#btn_finish_issue").html('<i class = "fas fa-check"> </i> Finish');
                 });
         } else {
             swal("Cannot proceed!", "Please select entries to finish!", "warning");
@@ -463,6 +592,60 @@
                     }
                     $("#btn_delete_task").prop('disabled', false);
                     $("#btn_delete_task").html('<i class = "fas fa-trash"> </i> Delete');
+                });
+        } else {
+            swal("Cannot proceed!", "Please select entries to delete!", "warning");
+        }
+    }
+
+    function deleteIssue() {
+
+        var count_checked = $("input[name='dt_id_5']:checked").length;
+
+        if (count_checked > 0) {
+
+            $("#btn_delete_issue").prop("disabled", true);
+            $("#btn_delete_issue").html("<span class='fa fa-spinner fa-spin'></span>");
+            swal({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover these entries!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var checkedValues = $("input[name='dt_id_5']:checked").map(function() {
+                            return this.value;
+                        }).get();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=deleteIssue",
+                            data: {
+                                input: {
+                                    ids: checkedValues
+                                }
+                            },
+                            success: function(  data) {
+                                getEntries5();
+                                var json = JSON.parse(data);
+                                console.log(json);
+                                if (json.data == 1) {
+                                    swal("Success!", "Successfully deleted issue!", "success");
+                                } else {
+                                    failed_query(json);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                errorLogger('Error:', textStatus, errorThrown);
+                            }
+                        });
+                    } else {
+                        swal("Cancelled", "Entries are safe :)", "error");
+                    }
+                    $("#btn_delete_issue").prop('disabled', false);
+                    $("#btn_delete_issue").html('<i class = "fas fa-trash"> </i> Delete');
                 });
         } else {
             swal("Cannot proceed!", "Please select entries to delete!", "warning");

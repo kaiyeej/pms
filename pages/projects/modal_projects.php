@@ -110,6 +110,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="materials-tab3" data-toggle="tab" href="#materials3" role="tab" aria-controls="materials" aria-selected="false">Materials</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="issues-tab3" data-toggle="tab" href="#issues3" role="tab" aria-controls="issues" aria-selected="false">Issues</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent2">
                             <div class="tab-pane fade active show" id="members3" role="tabpanel" aria-labelledby="members-tab3">
@@ -318,6 +322,64 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="tab-pane fade" id="issues3" role="tabpanel" aria-labelledby="issues-tab3">
+                                <div class="row">
+                                    <div class="col-4" id="col-item">
+                                        <form method='POST' id='frm_submit_5'>
+                                            <input type="hidden" id="hidden_id_5" name="input[project_id]">
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Date Started</strong></label>
+                                                    <input type="date" class="form-control input-item" name="input[date_started_2]" id="task_date_started_2" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Issue</strong></label>
+                                                    <textarea class="form-control" class="form-control input-item" placeholder="Issue description" name="input[task_desc_2]" id="task_desc_2" required></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Date Started</strong></label>
+                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="date_started" required>
+                                                </div>
+                                            </div> -->
+                                            <div class='btn-group' style="float: right;">
+                                                <button type="submit" class="btn btn-info" id="btn_submit_5">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-8" id="col-list">
+                                        <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="finishIssue()" id="btn_finish_issue" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Finish</button>
+                                            <button type="button" onclick="deleteIssue()" id="btn_delete_issue" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped" id="dt_entries_5" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="custom-checkbox custom-control">
+                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-5" onchange="checkAll(this, 'dt_id_5')">
+                                                                <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Issue</th>
+                                                        <th>Status</th>
+                                                        <th>Date Started</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

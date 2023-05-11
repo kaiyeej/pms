@@ -78,13 +78,13 @@ class Distributions extends Connection
         $rows = array();
         $result = $this->select("tbl_project_members", '*', $param);
         while ($row = $result->fetch_assoc()) {
-
+            $expected_salary = $row['expected_salary'];
             $get_received_cash = $this->get_received_cash($row['project_id'],$row['user_id'],0);
 
             $row['member']          = $Users->fullname($row['user_id']);
-            $row['expected_salary'] = number_format($row['expected_salary'],2);
+            $row['expected_salary'] = number_format($expected_salary,2);
             $row['received']        = number_format($get_received_cash,2);
-            $row['balance']         = number_format($row['expected_salary']-$get_received_cash,2);
+            $row['balance']         = number_format($expected_salary - $get_received_cash,2);
             
             $rows[] = $row;
         }
