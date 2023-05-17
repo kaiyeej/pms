@@ -95,6 +95,7 @@ class Projects extends Connection
         $task_desc = $this->inputs['task_desc_2'];
         $form = array(
             $this->pk => $this->inputs[$this->pk],
+            'project_member_id' => $this->inputs['project_member_id'],
             'date_started' => $this->inputs['date_started_2'],
             'task_type' => "I",
             'task_desc' => $task_desc,

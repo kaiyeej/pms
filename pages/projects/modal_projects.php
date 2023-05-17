@@ -331,6 +331,13 @@
 
                                             <div class="form-group row">
                                                 <div class="col">
+                                                    <label><strong>Member</strong></label>
+                                                    <div>
+                                                        <select class="form-control form-control-sm select2" name="input[project_member_id]" id="project_member_id_2" style="width:100%;" required></select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col">
                                                     <label><strong>Date Started</strong></label>
                                                     <input type="date" class="form-control input-item" name="input[date_started_2]" id="task_date_started_2" required>
                                                 </div>
@@ -341,12 +348,7 @@
                                                     <textarea class="form-control" class="form-control input-item" placeholder="Issue description" name="input[task_desc_2]" id="task_desc_2" required></textarea>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group row">
-                                                <div class="col">
-                                                    <label><strong>Date Started</strong></label>
-                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="date_started" required>
-                                                </div>
-                                            </div> -->
+
                                             <div class='btn-group' style="float: right;">
                                                 <button type="submit" class="btn btn-info" id="btn_submit_5">Submit</button>
                                             </div>
@@ -367,6 +369,7 @@
                                                                 <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
                                                             </div>
                                                         </th>
+                                                        <th>Member</th>
                                                         <th>Issue</th>
                                                         <th>Status</th>
                                                         <th>Date Started</th>

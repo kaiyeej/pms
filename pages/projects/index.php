@@ -158,7 +158,6 @@
         var param = "project_id = '" + hidden_id_2 + "'";
         getRemainingProjectFee(hidden_id_2);
         getSelectOption('ProjectMembers', 'project_member_id', 'user_fullname', 'project_id="' + hidden_id_2 + '"');
-
         $("#dt_entries_2").DataTable().destroy();
         $("#dt_entries_2").DataTable({
             "processing": true,
@@ -253,6 +252,7 @@
 
         var hidden_id_5 = $("#hidden_id_5").val();
         var param = "project_id = '" + hidden_id_5 + "' AND task_type='I'";
+         getSelectOptionByID('ProjectMembers', 'project_member_id_2','project_member_id', 'user_fullname', 'project_id="' + hidden_id_5 + '"');
 
         $("#dt_entries_5").DataTable().destroy();
         $("#dt_entries_5").DataTable({
@@ -274,6 +274,9 @@
                     "mRender": function(data, type, row) {
                         return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_5" id="checkbox-b' + row.task_id + '" value=' + row.task_id + '><label for="checkbox-b' + row.task_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
+                },
+                {
+                    "data": "member"
                 },
                 {
                     "data": "task_desc"
@@ -817,6 +820,39 @@
                 }
             });
         }
+    }
+
+    function getSelectOptionByID(class_name, input_id, primary_id, label, param = '', attributes = [], pre_value = '', pre_label = 'Please Select', sub_option = '') {
+      $.ajax({
+        type: "POST",
+        url: "controllers/sql.php?c=" + class_name + "&q=show",
+        data: {
+          input: {
+            param: param
+          }
+        },
+        success: function(data) {
+          var json = JSON.parse(data);
+          if (pre_value != "remove") {
+            $("#" + input_id).html("<option value='" + pre_value + "'> &mdash; " + pre_label + " &mdash; </option>");
+          }
+
+          for (list_index = 0; list_index < json.data.length; list_index++) {
+            const list = json.data[list_index];
+            var data_attributes = {};
+            if (sub_option == 1) {
+              data_attributes['value'] = list[primary_id.slice(0, -2)];
+            } else {
+              data_attributes['value'] = list[primary_id];
+            }
+            for (var attr_index in attributes) {
+              const attr = attributes[attr_index];
+              data_attributes[attr] = list[attr];
+            }
+            $('#' + input_id).append($("<option></option>").attr(data_attributes).text(list[label]));
+          }
+        }
+      });
     }
 
     $(document).ready(function() {
