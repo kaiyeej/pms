@@ -129,7 +129,9 @@
                                                         <select class="form-control form-control-sm select2" name="input[user_id]" id="user_id" style="width:100%;" required></select>
                                                     </div>
                                                 </div>
+                                            </div>
 
+                                            <div class="form-group row">
                                                  <div class="col">
                                                     <label><strong>Role</strong></label>
                                                     <div>
@@ -203,6 +205,9 @@
                                                         <select class="form-control form-control-sm select2" name="input[project_member_id]" id="project_member_id" style="width:100%;" required></select>
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="form-group row">
                                                 <div class="col">
                                                     <label><strong>Date Started</strong></label>
                                                     <input type="date" class="form-control input-item" name="input[date_started]" id="task_date_started" required>
@@ -214,12 +219,7 @@
                                                     <textarea class="form-control" class="form-control input-item" placeholder="Task description" name="input[task_desc]" id="task_desc" required></textarea>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group row">
-                                                <div class="col">
-                                                    <label><strong>Date Started</strong></label>
-                                                    <input type="date" class="form-control input-item" name="input[date_started]" id="date_started" required>
-                                                </div>
-                                            </div> -->
+                                           
                                             <div class='btn-group' style="float: right;">
                                                 <button type="submit" class="btn btn-info" id="btn_submit_3">Submit</button>
                                             </div>
@@ -262,6 +262,25 @@
 
                                             <div class="form-group row">
                                                 <div class="col">
+                                                    <label><strong>Project Material</strong></label>
+                                                    <input type="text" class="form-control input-item" name="input[project_material]" id="project_material" placeholder="Project material" required>
+                                                </div>
+
+                                                <div class="col">
+                                                    <label><strong>Amount</strong></label>
+                                                    <input type="number" class="form-control input-item" name="input[project_material_amount]" id="project_material_amount" step="0.1" placeholder="Amount" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Remarks</strong></label>
+                                                    <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col">
                                                     <div class="custom-control custom-checkbox" style="float: right;">
                                                         <input type="checkbox" value="P" class="custom-control-input input-item" name="input[status]" id="status">
                                                         <label class="custom-control-label " for="status" style="color:#6777ef;font-weight:bold;"> Paid</label>
@@ -269,24 +288,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label>Project Material</label>
-                                                    <input type="text" class="form-control input-item" name="input[project_material]" id="project_material" placeholder="Project material" required>
-                                                </div>
-
-                                                <div class="col">
-                                                    <label>Amount</label>
-                                                    <input type="number" class="form-control input-item" name="input[project_material_amount]" id="project_material_amount" step="0.1" placeholder="Project material amount" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label>Remarks</label>
-                                                    <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks"></textarea>
-                                                </div>
-                                            </div>
                                             <div class='btn-group' style="float: right;">
                                                 <button type="submit" class="btn btn-info" id="btn_submit_4">Submit</button>
                                             </div>
@@ -336,7 +337,9 @@
                                                         <select class="form-control form-control-sm select2" name="input[project_member_id]" id="project_member_id_2" style="width:100%;" required></select>
                                                     </div>
                                                 </div>
+                                            </div>
 
+                                            <div class="form-group row">
                                                 <div class="col">
                                                     <label><strong>Date Started</strong></label>
                                                     <input type="date" class="form-control input-item" name="input[date_started_2]" id="task_date_started_2" required>
