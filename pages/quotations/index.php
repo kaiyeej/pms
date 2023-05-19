@@ -117,7 +117,7 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_2" id="checkbox-b' + row.quotation_detail_id + '" value=' + row.quotation_detail_id + '><label for="checkbox-b' + row.quotation_detail_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_2" id="checkbox-c' + row.quotation_detail_id + '" value=' + row.quotation_detail_id + '><label for="checkbox-c' + row.quotation_detail_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {

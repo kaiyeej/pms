@@ -65,7 +65,7 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id" id="checkbox-b' + row.project_id + '" value=' + row.project_id + '><label for="checkbox-b' + row.project_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id" id="checkbox-a' + row.project_id + '" value=' + row.project_id + '><label for="checkbox-a' + row.project_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {
@@ -104,50 +104,6 @@
                 {
                     "data": "date_modified"
                 }
-            ]
-        });
-    }
-
-    function getEntries3() {
-
-        var hidden_id_3 = $("#hidden_id_3").val();
-        var param = "project_id = '" + hidden_id_3 + "' AND task_type='T'";
-
-        $("#dt_entries_3").DataTable().destroy();
-        $("#dt_entries_3").DataTable({
-            "processing": true,
-            "order": [
-                [3, 'desc']
-            ],
-            "ajax": {
-                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_task",
-                "dataSrc": "data",
-                "type": "POST",
-                "data": {
-                    input: {
-                        param: param
-                    }
-                }
-            },
-            "columns": [{
-                    "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_3" id="checkbox-b' + row.task_id + '" value=' + row.task_id + '><label for="checkbox-b' + row.task_id + '" class="custom-control-label">&nbsp;</label></div>';
-                    }
-                },
-                {
-                    "data": "member"
-                },
-                {
-                    "data": "task_desc"
-                },
-                {
-                    "mRender": function(data, type, row) {
-                        return row.status == "F" ? "<div class='badge badge-success'>Finished</div>" : "<div class='badge badge-light'>Todo</div>";
-                    }
-                },
-                {
-                    "data": "date_started"
-                },
             ]
         });
     }
@@ -197,6 +153,50 @@
         });
     }
 
+    function getEntries3() {
+
+        var hidden_id_3 = $("#hidden_id_3").val();
+        var param = "project_id = '" + hidden_id_3 + "' AND task_type='T'";
+
+        $("#dt_entries_3").DataTable().destroy();
+        $("#dt_entries_3").DataTable({
+            "processing": true,
+            "order": [
+                [3, 'desc']
+            ],
+            "ajax": {
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_task",
+                "dataSrc": "data",
+                "type": "POST",
+                "data": {
+                    input: {
+                        param: param
+                    }
+                }
+            },
+            "columns": [{
+                    "mRender": function(data, type, row) {
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_3" id="checkbox-c' + row.task_id + '" value=' + row.task_id + '><label for="checkbox-c' + row.task_id + '" class="custom-control-label">&nbsp;</label></div>';
+                    }
+                },
+                {
+                    "data": "member"
+                },
+                {
+                    "data": "task_desc"
+                },
+                {
+                    "mRender": function(data, type, row) {
+                        return row.status == "F" ? "<div class='badge badge-success'>Finished</div>" : "<div class='badge badge-light'>Todo</div>";
+                    }
+                },
+                {
+                    "data": "date_started"
+                },
+            ]
+        });
+    }
+
 
     function getEntries4() {
 
@@ -221,7 +221,7 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_4" id="checkbox-b' + row.project_material_id + '" value=' + row.project_material_id + '><label for="checkbox-b' + row.project_material_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_4" id="checkbox-d' + row.project_material_id + '" value=' + row.project_material_id + '><label for="checkbox-d' + row.project_material_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {
@@ -272,7 +272,7 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_5" id="checkbox-b' + row.task_id + '" value=' + row.task_id + '><label for="checkbox-b' + row.task_id + '" class="custom-control-label">&nbsp;</label></div>';
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_5" id="checkbox-e' + row.task_id + '" value=' + row.task_id + '><label for="checkbox-e' + row.task_id + '" class="custom-control-label">&nbsp;</label></div>';
                     }
                 },
                 {

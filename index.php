@@ -507,6 +507,7 @@ if (!isset($_SESSION["pms_status"])) {
         data: $("#frm_submit_2").serialize(),
         success: function(data) {
           getEntries2();
+          route_settings.class_name == "Projects" ? getEntries5() : "";
           var json = JSON.parse(data);
           if (json.data == 1) {
             success_add();
