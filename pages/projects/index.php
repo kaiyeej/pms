@@ -293,6 +293,39 @@
         });
     }
 
+    function getEntries6() {
+
+        var hidden_id_6 = $("#hidden_id_6").val();
+        var param = "project_id = '" + hidden_id_6 + "'";
+
+        $("#dt_entries_6").DataTable().destroy();
+        $("#dt_entries_6").DataTable({
+            "processing": true,
+            "ajax": {
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_note",
+                "dataSrc": "data",
+                "type": "POST",
+                "data": {
+                    input: {
+                        param: param
+                    }
+                }
+            },
+            "columns": [{
+                    "mRender": function(data, type, row) {
+                        return '<div class="custom-checkbox custom-control"><input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="dt_id_6" id="checkbox-e' + row.note_id + '" value=' + row.note_id + '><label for="checkbox-e' + row.note_id + '" class="custom-control-label">&nbsp;</label></div>';
+                    }
+                },
+                {
+                    "data": "content"
+                },
+                {
+                    "data": "date_added"
+                },
+            ]
+        });
+    }
+
     $("#frm_submit_3").submit(function(e) {
         e.preventDefault();
 
@@ -373,8 +406,6 @@
                     $('.select2').select2().trigger('change');
                 } else if (json.data == 2) {
                     entry_already_exists();
-                } else if (json.data == 3) {
-                    amount_is_greater();
                 } else {
                     failed_query(json);
                     $("#modalEntry2").modal('hide');
@@ -384,6 +415,37 @@
             }
         });
     });
+
+
+    $("#frm_submit_6").submit(function(e) {
+        e.preventDefault();
+
+        $("#btn_submit_6").prop('disabled', true);
+        $("#btn_submit_6").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
+
+        $.ajax({
+            type: "POST",
+            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=add_note",
+            data: $("#frm_submit_6").serialize(),
+            success: function(data) {
+                getEntries6();
+                var json = JSON.parse(data);
+                if (json.data == 1) {
+                    success_add();
+                    document.getElementById("frm_submit_6").reset();
+                    $('.select2').select2().trigger('change');
+                } else if (json.data == 2) {
+                    entry_already_exists();
+                } else {
+                    failed_query(json);
+                    $("#modalEntry2").modal('hide');
+                }
+                $("#btn_submit_6").prop('disabled', false);
+                $("#btn_submit_6").html("Submit");
+            }
+        });
+    });
+
 
     function finishTask() {
 
@@ -649,6 +711,59 @@
                     }
                     $("#btn_delete_issue").prop('disabled', false);
                     $("#btn_delete_issue").html('<i class = "fas fa-trash"> </i> Delete');
+                });
+        } else {
+            swal("Cannot proceed!", "Please select entries to delete!", "warning");
+        }
+    }
+
+    function deleteNotes(){
+        var count_checked = $("input[name='dt_id_6']:checked").length;
+
+        if (count_checked > 0) {
+
+            $("#btn_delete_note").prop("disabled", true);
+            $("#btn_delete_note").html("<span class='fa fa-spinner fa-spin'></span>");
+            swal({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover these entries!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var checkedValues = $("input[name='dt_id_6']:checked").map(function() {
+                            return this.value;
+                        }).get();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=deleteNote",
+                            data: {
+                                input: {
+                                    ids: checkedValues
+                                }
+                            },
+                            success: function(  data) {
+                                getEntries6();
+                                var json = JSON.parse(data);
+                                console.log(json);
+                                if (json.data == 1) {
+                                    swal("Success!", "Successfully deleted note!", "success");
+                                } else {
+                                    failed_query(json);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                errorLogger('Error:', textStatus, errorThrown);
+                            }
+                        });
+                    } else {
+                        swal("Cancelled", "Entries are safe :)", "error");
+                    }
+                    $("#btn_delete_note").prop('disabled', false);
+                    $("#btn_delete_note").html('<i class = "fas fa-trash"> </i> Delete');
                 });
         } else {
             swal("Cannot proceed!", "Please select entries to delete!", "warning");
