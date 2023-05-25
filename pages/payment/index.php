@@ -52,6 +52,84 @@
 </section>
 <?php include "modal_payment.php"; ?>
 <script type="text/javascript">
+    function updateAcknowledgementReceiptAmount(){
+        var amount = $("#ack_amount").val()*1;
+        var payment_id = $("#ack_payment_id").val();
+
+        $.ajax({
+            type: "POST",
+            url: "controllers/sql.php?c=" + route_settings.class_name + "&q=update_acknowledgement_receipt_amount",
+            data: {
+              input: {
+                id: payment_id,
+                amount:amount
+              }
+            },
+            success: function(data) {
+                var json = JSON.parse(data);
+                if (json.data == 1) {
+                   success_update();
+                }else{
+                    failed_query(json);
+                }
+            }
+        });
+    }
+
+
+    function viewAcknowledgementReceipt(id){
+        $.ajax({
+        type: "POST",
+        url: "controllers/sql.php?c=" + route_settings.class_name + "&q=view_acknowledgement_receipt",
+        data: {
+          input: {
+            id: id
+          }
+        },success: function(data) {
+            var jsonParse = JSON.parse(data);
+            const json = jsonParse.data;
+
+            $('.input-item').map(function() {
+                const id_name = this.id;
+                this.value = json[id_name];
+                $("#" + id_name).val(json[id_name]).trigger('change');
+            });
+        }
+        });
+        $("#modalEntryAcknowledgement").modal('show');
+    }
+
+    function printAckowledgementReceipt(id){
+        $.ajax({
+        type: "POST",
+        url: "controllers/sql.php?c=" + route_settings.class_name + "&q=view_acknowledgement_receipt",
+        data: {
+          input: {
+            id: id
+          }
+        },success: function(data) {
+            var jsonParse = JSON.parse(data);
+            const json = jsonParse.data;
+            $("#print_acknowledgement_date").html(json.print_acknowledgement_date);
+            $("#print_acknowledgement_address").html(json.print_acknowledgement_address);
+            $("#print_acknowledgement_client").html(json.print_acknowledgement_client);
+            $("#print_acknowledgement_amount").html(json.print_acknowledgement_amount);
+            $("#print_acknowledgement_project_name").html(json.print_acknowledgement_project_name);
+            $("#print_acknowledgement_payment_date").html(json.print_acknowledgement_payment_date);
+        }
+        });
+
+        $("#modalEntryAcknowledgementPrint").modal('show');
+    }
+
+    function printDiv(divName){
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+
     function getEntries() {
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
@@ -67,7 +145,19 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-sm btn-info' onclick='getEntryDetails(" + row.payment_id + ")'><span class='fa fa-edit'></span></button></center>";
+                       return "<center>"+
+                        "<li class='dropdown' style='list-style: none; font-size: 18px; color: #FFF;'>"+
+                          "<a href='#' class='dropdown-toggle' data-toggle='dropdown' style='color: #607D8B;'><strong><span class='fa fa-list'></span></strong></a>"+
+                            "<ul class='dropdown-menu'>"+
+                              "<ul style='background: #444; border: 1px solid #333; padding: 5px 10px;'>"+
+                                "<li style='list-style:none;color:#FFF;'><a href='#' onclick='getEntryDetails("+row.payment_id+")' style='color:#fff;' data-toggle='tooltip' title='Update payment details' ><span class='fa fa-edit' style='font-size: 14px;'></span> Update payment</a></li>"+
+                                "<li style='list-style:none;color:#FFF;'><a href='#' onclick='printAckowledgementReceipt("+row.payment_id+")' style='color:#fff;' data-toggle='tooltip' title='Print Record' ><span class='fa fa-print' style='font-size: 14px;'></span> Print Acknowledgement Receipt</a></li>"+
+                                "<li style='list-style:none;color:#FFF;'><a href='#' onclick='viewAcknowledgementReceipt("+row.payment_id+")' style='color:#fff;' data-toggle='tooltip' title='View Acknowledgement Receipt' ><span class='fa fa-eye' style='font-size: 14px;'></span> View Acknowledgement Receipt</a></li>"+
+                                
+                              "</ul>"+
+                            "</ul>"+
+                        "</li>"+
+                    "</center>";
                     }
                 },
                 {

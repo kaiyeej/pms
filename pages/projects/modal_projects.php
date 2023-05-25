@@ -114,6 +114,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="issues-tab3" data-toggle="tab" href="#issues3" role="tab" aria-controls="issues" aria-selected="false">Issues</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="notes-tab3" data-toggle="tab" href="#notes3" role="tab" aria-controls="notes" aria-selected="false">Notes</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent2">
                             <div class="tab-pane fade active show" id="members3" role="tabpanel" aria-labelledby="members-tab3">
@@ -376,6 +380,51 @@
                                                         <th>Issue</th>
                                                         <th>Status</th>
                                                         <th>Date Started</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="notes3" role="tabpanel" aria-labelledby="notes-tab3">
+                                <div class="row">
+                                    <div class="col-4" id="col-item">
+                                        <form method='POST' id='frm_submit_6'>
+                                            <input type="hidden" id="hidden_id_6" name="input[project_id]">
+
+                                            <div class="form-group row">
+                                                <div class="col">
+                                                    <label><strong>Content</strong></label>
+                                                    <textarea class="form-control" class="form-control input-item" placeholder="Note content" name="input[note_content]" id="note_content" required></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class='btn-group' style="float: right;">
+                                                <button type="submit" class="btn btn-info" id="btn_submit_6">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-8" id="col-list">
+                                        <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="deleteNotes()" id="btn_delete_note" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped" id="dt_entries_6" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="custom-checkbox custom-control">
+                                                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-6" onchange="checkAll(this, 'dt_id_6')">
+                                                                <label for="checkbox-6" class="custom-control-label">&nbsp;</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Content</th>
+                                                        <th>Date Added</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

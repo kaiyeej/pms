@@ -434,7 +434,7 @@ if (!isset($_SESSION["pms_status"])) {
     function getEntryDetails2(id) {
       $("#hidden_id_2").val(id);
 
-      route_settings.class_name == "Projects" ? ($("#hidden_id_3").val(id),$("#hidden_id_4").val(id),$("#hidden_id_5").val(id)) : "";
+      route_settings.class_name == "Projects" ? ($("#hidden_id_3").val(id),$("#hidden_id_4").val(id),$("#hidden_id_5").val(id),$("#hidden_id_6").val(id)) : "";
 
       modal_detail_status = 1;
       $.ajax({
@@ -488,7 +488,7 @@ if (!isset($_SESSION["pms_status"])) {
           }
           getEntries2();
 
-          route_settings.class_name == "Projects" ? (getEntries3(),getEntries4(),getEntries5()) : "";
+          route_settings.class_name == "Projects" ? (getEntries3(),getEntries4(),getEntries5(),getEntries6()) : "";
           
           $("#modalEntry2").modal('show');
         }

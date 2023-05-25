@@ -104,6 +104,16 @@ class Projects extends Connection
         return $this->insertIfNotExist('tbl_tasks', $form, "$this->pk = '$primary_id' AND task_desc = '$task_desc'");
     }
 
+    public function add_note()
+    {
+        $form = array(
+            $this->pk => $this->inputs[$this->pk],
+            'content' => $this->inputs['note_content'],
+        );
+
+        return $this->insert('tbl_notes', $form);
+    }
+
     public function edit()
     {
         $primary_id = $this->inputs[$this->pk];
@@ -161,7 +171,6 @@ class Projects extends Connection
     public function show_task()
     {
         $Users = new Users();
-        $Roles = new Roles();
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
         $result = $this->select("tbl_tasks", '*', $param);
@@ -175,12 +184,22 @@ class Projects extends Connection
     public function show_issue()
     {
         $Users = new Users();
-        $Roles = new Roles();
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
         $result = $this->select("tbl_tasks", '*', $param);
         while ($row = $result->fetch_assoc()) {
             $row['member'] = $Users->fullname($row['project_member_id']);
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+    public function show_note()
+    {
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
+        $rows = array();
+        $result = $this->select("tbl_notes", '*', $param);
+        while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
         }
         return $rows;
@@ -253,6 +272,12 @@ class Projects extends Connection
     {
         $ids = implode(",", $this->inputs['ids']);
         return $this->delete('tbl_tasks',"task_id IN($ids)");
+    }
+
+    public function deleteNote()
+    {
+        $ids = implode(",", $this->inputs['ids']);
+        return $this->delete('tbl_notes',"note_id IN($ids)");
     }
 
     public function deleteMember()
