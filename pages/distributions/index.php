@@ -101,6 +101,19 @@
             "order": [
                 [3, 'desc']
             ],
+            footerCallback: function (row, data, start, end, display) {
+            var api = this.api();
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+            };
+ 
+            //footer
+            $(api.column(1).footer()).html(api.column(1).data().reduce(function (a, b) {return intVal(a) + intVal(b);}, 0));
+            $(api.column(2).footer()).html(api.column(2).data().reduce(function (a, b) {return intVal(a) + intVal(b);}, 0));
+            $(api.column(3).footer()).html(api.column(3).data().reduce(function (a, b) {return intVal(a) + intVal(b);}, 0));
+        },
             "ajax": {
                 "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show_detail",
                 "dataSrc": "data",
