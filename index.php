@@ -1,6 +1,7 @@
 <?php
 include 'core/config.php';
 $Users = new Users;
+$Homepage = new Homepage;
 if (!isset($_SESSION["pms_status"])) {
   header("location:./login.php");
 }
@@ -57,6 +58,26 @@ if (!isset($_SESSION["pms_status"])) {
       .modal-xl {
         width: 90%;
         max-width: 1200px;
+      }
+    }
+
+    @media screen {
+      #printSection {
+          display: none;
+      }
+    }
+
+    @media print {
+      body * {
+        visibility:hidden;
+      }
+      #printSection, #printSection * {
+        visibility:visible;
+      }
+      #printSection {
+        position:absolute;
+        left:0;
+        top:0;
       }
     }
   </style>

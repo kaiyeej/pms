@@ -41,9 +41,6 @@
 </form>
 
 
-
-
-
 <div class="modal fade" id="modalEntryAcknowledgement" role="dialog" aria-labelledby="myModalLabel" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -72,6 +69,11 @@
                     </div>
 
                     <div class="form-group col-md-12">
+                        <label>E-mail</label>
+                        <input type="text" class="form-control input-item" name="ack_email" id="ack_email" readonly>
+                    </div>
+
+                    <div class="form-group col-md-12">
                         <label>Amount</label>
                         <input type="number" step="0.1" class="form-control input-item" name="input[ack_amount]" autocomplete="off" id="ack_amount" required>
                     </div>
@@ -88,7 +90,6 @@
         </div>
     </div>
 </div>
-
 
 
 
@@ -141,7 +142,7 @@
             </div>
             <div class="modal-footer bg-whitesmoke br">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" onclick="printDiv('printAcknowledgementReceiptDiv')" class="btn btn-primary">
+                <button type="submit" id="btnPrint" class="btn btn-primary">
                     Print
                 </button>
             </div>

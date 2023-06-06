@@ -20,6 +20,10 @@
                             <input type="text" class="form-control input-item" placeholder="Contact number" name="input[client_contact_num]" id="client_contact_num" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-6">
+                            <label>E-mail</label>
+                            <input type="text" class="form-control input-item" placeholder="E-mail" autocomplete="off" name="input[client_email]" id="client_email" required>
+                        </div>
+                        <div class="form-group col-md-12">
                             <label>Address</label>
                             <input type="text" class="form-control input-item" placeholder="Address" autocomplete="off" name="input[client_address]" id="client_address" required>
                         </div>

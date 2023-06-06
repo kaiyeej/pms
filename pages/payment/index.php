@@ -122,12 +122,24 @@
         $("#modalEntryAcknowledgementPrint").modal('show');
     }
 
-    function printDiv(divName){
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
+    document.getElementById("btnPrint").onclick = function () {
+        printElement(document.getElementById("printAcknowledgementReceiptDiv"));
+    }
+
+    function printElement(elem) {
+        var domClone = elem.cloneNode(true);
+        
+        var $printSection = document.getElementById("printSection");
+        
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
+        }
+        
+        $printSection.innerHTML = "";
+        $printSection.appendChild(domClone);
         window.print();
-        document.body.innerHTML = originalContents;
     }
 
     function getEntries() {
@@ -145,7 +157,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return '<div class="dropdown"><button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list"></button><div class="dropdown-menu" aria-labelledby="dropdownMenu2"><button class="dropdown-item" type="button" onclick="getEntryDetails('+row.payment_id+')"><span class="fa fa-edit" style="font-size: 14px;"></span> Update payment</button><button class="dropdown-item" type="button" onclick="printAckowledgementReceipt('+row.payment_id+')"><span class="fa fa-print" style="font-size: 14px;"></span> Print Acknowledgement <br> Receipt</button><button class="dropdown-item" type="button"><span class="fa fa-eye" style="font-size: 14px;"></span> View Acknowledgement <br> Receipt</button></div></div>';
+                        return '<div class="dropdown"><button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list"></button><div class="dropdown-menu" aria-labelledby="dropdownMenu2"><button class="dropdown-item" type="button" onclick="getEntryDetails('+row.payment_id+')"><span class="fa fa-edit" style="font-size: 14px;"></span> Update payment</button><button class="dropdown-item" type="button" onclick="printAckowledgementReceipt('+row.payment_id+')"><span class="fa fa-print" style="font-size: 14px;"></span> Print Acknowledgement <br> Receipt</button><button class="dropdown-item" type="button" onclick="viewAcknowledgementReceipt('+row.payment_id+')"><span class="fa fa-eye" style="font-size: 14px;"></span> View Acknowledgement <br> Receipt</button></div></div>';
                     }
                 },
                 {

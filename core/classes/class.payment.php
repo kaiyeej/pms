@@ -70,16 +70,17 @@ class Payment extends Connection
         $row['ack_payment_id']  = $primary_id;
         $row['ack_date']        = $payment_row['payment_date'];
         $row['ack_customer']    = $client_row['client_name'];
+        $row['ack_email']       = $client_row['client_email'];
         $row['ack_project']     = $project_row['project_name'];
         $row['ack_amount']      = $final_amount;
 
         //for print
-        $row['print_acknowledgement_date'] = date("F j, Y", strtotime($payment_row['payment_date']));
-        $row['print_acknowledgement_address'] = nl2br($client_row['client_address']);
-        $row['print_acknowledgement_client'] = $client_row['client_name'];
-        $row['print_acknowledgement_amount'] = ucwords($this->convert_number($final_amount))." Pesos Only (Php ".number_format($final_amount,2).")";
-        $row['print_acknowledgement_project_name'] = $project_row['project_name'];
-        $row['print_acknowledgement_payment_date'] = date("F j, Y", strtotime($payment_row['payment_date']));
+        $row['print_acknowledgement_date']          = date("F j, Y", strtotime($payment_row['payment_date']));
+        $row['print_acknowledgement_address']       = nl2br($client_row['client_address']);
+        $row['print_acknowledgement_client']        = $client_row['client_name'];
+        $row['print_acknowledgement_amount']        = ucwords($this->convert_number($final_amount))." Pesos Only (Php ".number_format($final_amount,2).")";
+        $row['print_acknowledgement_project_name']  = $project_row['project_name'];
+        $row['print_acknowledgement_payment_date']  = date("F j, Y", strtotime($payment_row['payment_date']));
 
         return $row;
     }
