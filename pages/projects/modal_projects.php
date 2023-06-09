@@ -1,7 +1,7 @@
-<form method='POST' id='frm_submit' class="users">
+<form method='POST' id='frm_submit'>
     <div class="modal fade" id="modalEntry" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel"><span class='ion-compose'></span> Add Entry</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -31,11 +31,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Description</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Project description" name="input[project_desc]" id="project_desc" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Project description" name="input[project_desc]" id="project_desc" autocomplete="off"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Project remarks" name="input[project_remarks]" id="project_remarks" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Project remarks" name="input[project_remarks]" id="project_remarks" autocomplete="off"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Date Started</label>

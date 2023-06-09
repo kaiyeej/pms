@@ -9,23 +9,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="hidden_id" name="input[expense_id]">
+                    <input type="hidden" id="hidden_id" name="input[roles_id]">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label>Expense Category</label>
-                            <select class="form-control input-item select2" name="input[expense_category_id]" id="expense_category_id" style="width:100%" required></select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Expense Amount</label>
-                            <input type="number" class="form-control input-item" name="input[expense_amount]" id="expense_amount" step="0.1" placeholder="Expense amount" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Date</label>
-                            <input type="date" class="form-control input-item" name="input[expense_date]" id="expense_date" required>
+                            <label>Role</label>
+                            <input type="text" class="form-control input-item" placeholder="Role name" name="input[role_name]" id="role_name" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-12">
-                            <label>Description</label>
-                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Expense description" name="input[expense_desc]" id="expense_desc"></textarea>
+                            <label>Remarks</label>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

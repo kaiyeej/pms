@@ -53,6 +53,10 @@ $routes = array(
         'class_name' => 'Suppliers',
         'has_detail' => 0
     ),
+    "notes" => array(
+        'class_name' => 'Notes',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 

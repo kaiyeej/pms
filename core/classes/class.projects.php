@@ -123,11 +123,14 @@ class Projects extends Connection
             return 2;
         } else {
             $form = array(
-                $this->name             => $this->clean($this->inputs[$this->name]),
-                'client_id'        => $this->inputs['client_id'],
-                'quotation_id'        => $this->inputs['quotation_id'],
-                'project_desc'        => $this->inputs['project_desc'],
-                'project_fee'    => $this->inputs['project_fee']
+                $this->name         => $this->clean($this->inputs[$this->name]),
+                'client_id'         => $this->inputs['client_id'],
+                'quotation_id'      => $this->inputs['quotation_id'],
+                'project_desc'      => $this->inputs['project_desc'],
+                'project_remarks'   => $this->inputs['project_remarks'],
+                'project_fee'       => $this->inputs['project_fee'],
+                'date_started'      => $this->inputs['date_started'],
+                'delivery_date'     => $this->inputs['delivery_date']
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");
         }

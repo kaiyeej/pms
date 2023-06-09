@@ -36,6 +36,7 @@
                                         </th>
                                         <th></th>
                                         <th>Name</th>
+                                        <th>E-mail</th>
                                         <th>Address</th>
                                         <th>Contact #</th>
                                         <th>Date Added</th>
@@ -72,6 +73,9 @@
                 },
                 {
                     "data": "client_name"
+                },
+                {
+                    "data": "client_email"
                 },
                 {
                     "data": "client_address"

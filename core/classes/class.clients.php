@@ -15,6 +15,7 @@ class Clients extends Connection
         } else {
             $form = array(
                 $this->name             => $this->clean($this->inputs[$this->name]),
+                'client_email'          => $this->inputs['client_email'],
                 'client_address'        => $this->inputs['client_address'],
                 'client_remarks'        => $this->inputs['client_remarks'],
                 'client_contact_num'    => $this->inputs['client_contact_num']
@@ -33,6 +34,7 @@ class Clients extends Connection
         } else {
             $form = array(
                 $this->name             => $this->clean($this->inputs[$this->name]),
+                'client_email'          => $this->inputs['client_email'],
                 'client_address'        => $this->inputs['client_address'],
                 'client_remarks'        => $this->inputs['client_remarks'],
                 'client_contact_num'    => $this->inputs['client_contact_num']

@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Date</label>
-                                <input type="date" class="form-control input-item"] name="input[distribution_date]" id="distribution_date" value="<?= date('Y-m-d'); ?>" required>
+                                <input type="date" class="form-control input-item" name="input[distribution_date]" id="distribution_date" value="<?= date('Y-m-d'); ?>" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Remarks</label>
@@ -48,6 +48,14 @@
                                     </thead>
                                     <tbody>
                                     </tbody>
+                                    <tfoot>
+                                        <tr style="background-color: #c2eaff">
+                                            <th style="float: right;">TOTAL:</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>

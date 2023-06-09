@@ -17,4 +17,5 @@ $classes = array(
     'Expenses'          => $pre_class . 'expenses.php',
     'ProjectMaterials'  => $pre_class . 'projectmaterials.php',
     'Suppliers'         => $pre_class . 'suppliers.php',
+    'Notes'             => $pre_class . 'notes.php',
 );

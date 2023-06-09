@@ -9,15 +9,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="hidden_id" name="input[roles_id]">
+                    <input type="hidden" id="hidden_id" name="input[note_id]">
+                    <input type="hidden" id="user_id" name="input[user_id]" value="<?=$_SESSION['user']['id']?>">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label>Role</label>
-                            <input type="text" class="form-control input-item" placeholder="Role name" name="input[role_name]" id="role_name" autocomplete="off" required>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[remarks]" id="remarks" autocomplete="off"></textarea>
+                            <label>Content</label>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Content" name="input[content]" id="content" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

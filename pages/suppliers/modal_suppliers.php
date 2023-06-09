@@ -15,17 +15,17 @@
                             <label>Name</label>
                             <input type="text" class="form-control input-item" placeholder="Supplier name" name="input[supplier_name]" id="supplier_name" autocomplete="off" required>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>Contact #</label>
-                            <input type="text" class="form-control input-item" placeholder="Contact number" name="input[supplier_contact_num]" id="supplier_contact_num" autocomplete="off" required>
+                            <input type="number" class="form-control input-item" placeholder="Contact number" name="input[supplier_contact_num]" id="supplier_contact_num" autocomplete="off" required>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>Address</label>
-                            <input type="text" class="form-control input-item" placeholder="Address" autocomplete="off" name="input[supplier_address]" id="supplier_address" required>
+                             <textarea class="form-control input-item" class="form-control input-item" placeholder="Address" name="input[supplier_address]" id="supplier_address" autocomplete="off"></textarea>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[supplier_remarks]" id="supplier_remarks" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Remarks" name="input[supplier_remarks]" id="supplier_remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>
