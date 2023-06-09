@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Address</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Address" name="input[user_address]" id="user_address" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Address" name="input[user_address]" id="user_address" autocomplete="off"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Category</label>

@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Description</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Expense description" name="input[expense_desc]" id="expense_desc"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Expense description" name="input[expense_desc]" id="expense_desc"></textarea>
                         </div>
                     </div>
                 </div>

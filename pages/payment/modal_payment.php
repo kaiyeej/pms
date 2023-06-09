@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Payment remarks" name="input[payment_remarks]" id="payment_remarks" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Payment remarks" name="input[payment_remarks]" id="payment_remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

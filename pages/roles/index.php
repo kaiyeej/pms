@@ -49,7 +49,7 @@
         </div>
     </div>
 </section>
-<?php include "modal_clients.php"; ?>
+<?php include "modal_roles.php"; ?>
 <script type="text/javascript">
     function getEntries() {
         $("#dt_entries").DataTable().destroy();

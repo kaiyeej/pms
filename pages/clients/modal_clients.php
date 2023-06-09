@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Contact #</label>
-                            <input type="text" class="form-control input-item" placeholder="Contact number" name="input[client_contact_num]" id="client_contact_num" autocomplete="off" required>
+                            <input type="number" class="form-control input-item" placeholder="Contact number" name="input[client_contact_num]" id="client_contact_num" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>E-mail</label>
@@ -25,11 +25,11 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Address</label>
-                            <input type="text" class="form-control input-item" placeholder="Address" autocomplete="off" name="input[client_address]" id="client_address" required>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Address" name="input[client_address]" id="client_address" autocomplete="off"></textarea>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Remarks</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Remarks" name="input[client_remarks]" id="client_remarks" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Remarks" name="input[client_remarks]" id="client_remarks" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>

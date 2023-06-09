@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Date</label>
-                                <input type="date" class="form-control input-item"] name="input[distribution_date]" id="distribution_date" value="<?= date('Y-m-d'); ?>" required>
+                                <input type="date" class="form-control input-item" name="input[distribution_date]" id="distribution_date" value="<?= date('Y-m-d'); ?>" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Remarks</label>

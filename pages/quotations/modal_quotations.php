@@ -19,7 +19,7 @@
 
                         <div class="form-group col-md-12">
                             <label>Description</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Description" name="input[quotation_description]" id="quotation_description" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Description" name="input[quotation_description]" id="quotation_description" autocomplete="off"></textarea>
                         </div>
 
                         <div class="form-group col-md-6">

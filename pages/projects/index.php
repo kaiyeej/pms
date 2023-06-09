@@ -906,35 +906,42 @@
     function updateExpectedSalary(project_member_id){
         var remaining_project_fee   = $("#remaining_project_fee").val()*1;
         var expected_salary_old     = $("#textbox-expected-salary-old"+project_member_id).val()*1;
-        var expected_salary_new     = $("#textbox-expected-salary-new"+project_member_id).val()*1;
+        var expected_salary_new     = $("#textbox-expected-salary-new"+project_member_id).val();
         
         var remaining_project_fee = remaining_project_fee+expected_salary_old;
 
-        if(expected_salary_new>remaining_project_fee){ //OVER 
-            amount_is_greater();
-            $("#textbox-expected-salary-new"+project_member_id).val(expected_salary_old);
-        }else{
+        if(expected_salary_new!=""){
+            var expected_salary_new_ = expected_salary_new*1;
 
-            $.ajax({
-                type: "POST",
-                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=update_expected_salary",
-                data: {
-                  input: {
-                    id: project_member_id,
-                    expected_salary:expected_salary_new
-                  }
-                },
-                success: function(data) {
-                    var json = JSON.parse(data);
-                    if (json.data == 1) {
-                       success_update();
-                       getEntries2();
-                    }else{
-                        failed_query(json);
+            if(expected_salary_new_>remaining_project_fee){ //OVER 
+                amount_is_greater();
+                $("#textbox-expected-salary-new"+project_member_id).val(expected_salary_old);
+            }else if(expected_salary_old==expected_salary_new_){
+            }else{
+
+                $.ajax({
+                    type: "POST",
+                    url: "controllers/sql.php?c=" + route_settings.class_name + "&q=update_expected_salary",
+                    data: {
+                      input: {
+                        id: project_member_id,
+                        expected_salary:expected_salary_new_
+                      }
+                    },
+                    success: function(data) {
+                        var json = JSON.parse(data);
+                        if (json.data == 1) {
+                           success_update();
+                           getEntries2();
+                        }else{
+                            failed_query(json);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
+
+        
     }
 
     function getSelectOptionByID(class_name, input_id, primary_id, label, param = '', attributes = [], pre_value = '', pre_label = 'Please Select', sub_option = '') {

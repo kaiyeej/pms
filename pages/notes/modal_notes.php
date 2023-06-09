@@ -14,7 +14,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Content</label>
-                            <textarea class="form-control" class="form-control input-item" placeholder="Content" name="input[content]" id="content" autocomplete="off"></textarea>
+                            <textarea class="form-control input-item" class="form-control input-item" placeholder="Content" name="input[content]" id="content" autocomplete="off"></textarea>
                         </div>
                     </div>
                 </div>
