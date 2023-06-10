@@ -49,8 +49,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="container">
-                    <div class="row alert alert-info alert-has-icon" style="padding-left: 0px;padding-right:0px;font-size: small;border: 1px dashed;">
-                        <div class="col-3">
+                    <div class="row alert alert-info alert-has-icon bg-secondary" style="padding-left: 0px;padding-right:0px;font-size: small;border: 1px dashed gray;">
+                        <div class="col-3" style="color:black;">
                             <div><b>Client:</b> <span id="client_name_label" class="label-item"></span></div>
                             <div><b>Quote Date:</b> <span id="quotation_date_label" class="label-item"></span></div>
                             <div><b>Valid Until:</b> <span id="quotation_valid_until_label" class="label-item"></span></div>
@@ -62,13 +62,13 @@
                         <div class="col-6">
                             <ul class="nav justify-content-end">
                                 <li class="nav-item">
-                                    <a id="menu-edit-transaction" class="nav-link" href="#" style="font-size: small;"><i class='ti ti-pencil'></i> Edit Quotation</a>
+                                    <a id="menu-edit-transaction" class="nav-link" href="#" style="font-size: small;color: black;"><i class='fa fa-edit'></i> Edit Quotation</a>
                                 </li>
                                 <li class="nav-item" style="display: none;">
-                                    <a id="menu-finish-transaction" class="nav-link" href="#" style="font-size: small;"><i class='ti ti-check'></i> Finish Transaction</a>
+                                    <a id="menu-finish-transaction" class="nav-link" href="#" style="font-size: small;color: black;"><i class='fa fa-check'></i> Finish Transaction</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-dismiss="modal" style="font-size: small;"><i class='ti ti-close'></i> Close</a>
+                                    <a class="nav-link" href="#" data-dismiss="modal" style="font-size: small;color: black;"><i class='fa fa-times'></i> Close</a>
                                 </li>
                             </ul>
                         </div>

@@ -38,7 +38,7 @@ if (isset($_SESSION["pms_status"])) {
                             <img src="assets/img/logo.png" alt="logo" width="100" class="shadow-light rounded-circle">
                         </div>
 
-                        <div class="card card-primary">
+                        <div class="card card-dark">
                             <div class="card-header">
                                 <h4>Login</h4>
                             </div>
@@ -62,7 +62,7 @@ if (isset($_SESSION["pms_status"])) {
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" id="btn_submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                        <button type="submit" id="btn_submit" class="btn btn-dark btn-lg btn-block" tabindex="4">
                                             Login
                                         </button>
                                     </div>
@@ -102,7 +102,7 @@ if (isset($_SESSION["pms_status"])) {
                     }
 
                     console.log(json.data);
-                    $("#btn_submit").html("Save");
+                    $("#btn_submit").html("Login");
                     $("#btn_submit").prop('disabled', false);
                 }
             });

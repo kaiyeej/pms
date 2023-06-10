@@ -8,7 +8,7 @@
     </div>
 
     <div class="section-body">
-        <div class="alert alert-light alert-has-icon" style="background:#DEFCF9;border: 1px dashed #3C84AB;">
+        <div class="alert alert-light alert-has-icon bg-secondary" style="border: 1px dashed gray;">
             <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
             <div class="alert-body">
                 <div class="alert-title">Payment</div>
@@ -157,7 +157,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return '<div class="dropdown"><button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list"></button><div class="dropdown-menu" aria-labelledby="dropdownMenu2"><button class="dropdown-item" type="button" onclick="getEntryDetails('+row.payment_id+')"><span class="fa fa-edit" style="font-size: 14px;"></span> Update payment</button><button class="dropdown-item" type="button" onclick="printAckowledgementReceipt('+row.payment_id+')"><span class="fa fa-print" style="font-size: 14px;"></span> Print Acknowledgement <br> Receipt</button><button class="dropdown-item" type="button" onclick="viewAcknowledgementReceipt('+row.payment_id+')"><span class="fa fa-eye" style="font-size: 14px;"></span> View Acknowledgement <br> Receipt</button></div></div>';
+                        return '<div class="dropdown d-inline"><a class="button-custom-style" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <span class="fa fa-cog"></span></a><div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;"><a class="dropdown-item has-icon" href="#" onclick="getEntryDetails('+row.payment_id+')"><i class="far fa-edit"></i> Update payment</a><a class="dropdown-item has-icon" href="#" onclick="printAckowledgementReceipt('+row.payment_id+')"><i class="fa fa-print"></i> Print Acknowledgement Receipt</a><a class="dropdown-item has-icon" href="#" onclick="viewAcknowledgementReceipt('+row.payment_id+')"><i class="far fa-eye"></i>  View Acknowledgement Receipt</a></div> </div>';
                     }
                 },
                 {

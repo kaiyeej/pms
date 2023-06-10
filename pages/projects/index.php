@@ -8,7 +8,7 @@
     </div>
 
     <div class="section-body">
-        <div class="alert alert-light alert-has-icon" style="background:#DEFCF9;border: 1px dashed #3C84AB;">
+        <div class="alert alert-light alert-has-icon bg-secondary" style="border: 1px dashed gray;">
             <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
             <div class="alert-body">
                 <div class="alert-title">Projects</div>
@@ -59,9 +59,12 @@
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
             "processing": true,
+             "order": [
+                [8, 'desc']
+            ],
             "ajax": {
                 "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show",
-                "dataSrc": "data"
+                "dataSrc": "data",
             },
             "columns": [{
                     "mRender": function(data, type, row) {
@@ -70,7 +73,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-sm btn-info' onclick='getEntryDetails2(" + row.project_id + ")'><span class='fa fa-edit'></span></button></center>";
+                        return "<center><a href='#' class='button-custom-style' onclick='getEntryDetails2(" + row.project_id + ")'><span class='fa fa-edit'></span></a></center>";
                     }
                 },
                 {

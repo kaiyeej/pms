@@ -1,9 +1,9 @@
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-        <a href="./">PMS</a>
+        <img src="assets/img/logo_1.png" alt="logo" width="75%">
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-        <a href="./">PMS</a>
+       <img src="assets/img/logo_1.png" alt="logo" width="75%">
     </div>
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
