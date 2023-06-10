@@ -64,14 +64,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="container">
-                    <div class="row alert alert-info alert-has-icon" style="padding-left: 0px;padding-right:0px;font-size: small;border: 1px dashed;">
-                        <div class="col-3">
+                    <div class="row alert alert-info alert-has-icon bg-secondary" style="padding-left: 0px;padding-right:0px;font-size: small;border: 1px dashed gray;">
+                        <div class="col-3" style="color:black;">
                             <div><b>Project Name:</b> <span id="project_name_label" class="label-item"></span></div>
                             <div><b>Client:</b> <span id="client_name_label" class="label-item"></span></div>
                             <div><b>Date Started:</b> <span id="date_started_label" class="label-item"></span></div>
                             <div><b>Delivery Date:</b> <span id="delivery_date_label" class="label-item"></span></div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3" style="color:black;">
                             <div><b>Quotation:</b> <span id="quotation_id_label" class="label-item"></span></div>
                             <div><b>Project Fee:</b> <span id="project_fee_label" class="label-item"></span></div>
                             <div><b>Description:</b> <span id="project_desc_label" class="label-item"></span></div>
@@ -80,13 +80,13 @@
                         <div class="col-6">
                             <ul class="nav justify-content-end">
                                 <li class="nav-item">
-                                    <a id="menu-edit-transaction" class="nav-link" href="#" style="font-size: small;"><i class='ti ti-pencil'></i> Edit Project</a>
+                                    <a id="menu-edit-transaction" class="nav-link" href="#" style="font-size: small;color: black;"><i class='fa fa-edit'></i> Edit Project</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="menu-finish-transaction" class="nav-link" href="#" style="font-size: small;"><i class='ti ti-check'></i> Finish Transaction</a>
+                                    <a id="menu-finish-transaction" class="nav-link" href="#" style="font-size: small;color: black;"><i class='fa fa-check'></i> Finish Transaction</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-dismiss="modal" style="font-size: small;"><i class='ti ti-close'></i> Close</a>
+                                    <a class="nav-link" href="#" data-dismiss="modal" style="font-size: small;color: black;"><i class='fa fa-times'></i> Close</a>
                                 </li>
                                 <!--<li class="nav-item">
                                 <a class="nav-link disabled" href="#">Disabled</a>
