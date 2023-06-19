@@ -29,7 +29,7 @@ class Homepage extends Connection
         $header     ="";
         $body       = "";
         $counter    = 1;
-        $result     = $this->select('tbl_project_members', '*',"user_id='$user_id'");
+        $result     = $this->select('tbl_project_members', '*',"user_id='$user_id' ORDER BY date_added DESC");
         while ($row = $result->fetch_assoc()) {
             $show_active    = $counter==1?"active show":"";
             $active         = $counter==1?"active":"";
@@ -42,7 +42,7 @@ class Homepage extends Connection
 
             $body_content_data_task    = "";
             $body_content_data_issue   = "";
-            $fetch_tasks = $this->select('tbl_tasks', '*',"project_id='$row[project_id]'");
+            $fetch_tasks = $this->select('tbl_tasks', '*',"project_id='$row[project_id]' AND (status='' OR status='S') AND project_member_id='$user_id'");
             while ($task_row = $fetch_tasks->fetch_assoc()) {
                 if($task_row['task_type']=="T"){ //TASK
                     $body_content_data_task .= "<span class='fa fa-circle' style='font-size: 8px;'></span> ".$task_row['task_desc']."<br>";
@@ -82,7 +82,7 @@ class Homepage extends Connection
         }
 
 
-        $return = '<div class="col-4"><div class="list-group" id="list-tab" role="tablist">'.$header.'</div></div><div class="col-8"><div class="tab-content" id="nav-tabContent">'.$body.'</div></div>';
+        $return = '<div class="col-4" style="overflow-y: scroll; height:400px;"><div class="list-group" id="list-tab" role="tablist">'.$header.'</div></div><div class="col-8"><div class="tab-content" id="nav-tabContent">'.$body.'</div></div>';
 
         
 

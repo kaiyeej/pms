@@ -1,7 +1,7 @@
 <?php
 
-// define('BASE_URL', 'http://localhost/pms/');
-// define("BASE_PATH", __DIR__ . "/../");
+define('BASE_URL', 'http://localhost/pms/');
+define("BASE_PATH", __DIR__ . "/../");
 
 // define("HOST", "localhost");
 // define("USER", "root");
